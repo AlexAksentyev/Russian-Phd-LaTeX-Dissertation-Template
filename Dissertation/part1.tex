@@ -1,205 +1,186 @@
-\chapter{Оформление различных элементов} \label{chapt1}
+\chapter{Методология измерения ЭДМ и её систематические ошибки} \label{chapt1}
 
-\section{Форматирование текста} \label{sect1_1}
+\section{Общее введение в методологию ``Замороженного Спина'' (FS)} \label{sect1_1}
+\subsection{Уравнение Т-БМТ}
+Уравнение Томаса-БМТ описывает динамику спин-вектора $\vec s$ в
+магнитном поле $\vec B$ и электростатическом поле $\vec E$. Его
+обобщённая версия, включающая влияние ЭДМ, может быть записана (в
+системе центра масс пучка) как:~\cite[стр.~6]{Eremey:Thesis}
+\begin{subequations}
+  \begin{align}
+    \ddt{\vec s} &= \vec s\times \bkt{\vec\W_{MDM} +\vec\W_{EDM}}, \label{eq:TBMT_main}
+    \intertext{где МДМ и ЭДМ угловые скорости $\vec\W_{MDM}$ и $\vec\W_{EDM}$ }
+    \vec\W_{MDM} &= \frac qm \bkt*{G\vec B - \bkt{G - \frac{1}{\gamma^2-1}}\frac{\vec E\times\vec\beta}{c}},\label{eq:TBMT_MDM} \\
+    \vec\W_{EDM} &= \frac qm \frac\eta2 \bkt*{\frac{\vec E}c + \vec\beta\times \vec B}.\label{eq:TBMT_EDM}
+  \end{align}
+\end{subequations}
+В уравнениях выше, $m,~q,~G=(g-2)/2$ есть, соответственно, масса, заряд, и
+магнитная аномалия частицы; $\beta = \sfrac{v_0}{c}$,
+нормализованная скорость частицы; $\gamma$ её Лоренц-фактор. ЭДМ
+множитель $\eta$ определяется уравнением $d = \eta\frac{q}{2mc}s$, где
+$d$ --- ЭДМ частицы, а $s$ её спин.
 
-Мы можем сделать \textbf{жирный текст} и \textit{курсив}.
+\subsection{Концепция замороженного спина}
+Из уравнения~\eqref{eq:TBMT_MDM} можно видеть, что, в отсутствии ЭДМ,
+направление вектора спина частицы пучка может быть зафиксировано
+относительно её вектора импульса: $\vec\W_{MDM}=\vec 0$; иными словами, можно реализовать
+условие замороженности спина (Frozen Spin condition).
 
-\section{Ссылки} \label{sect1_2}
-Сошлёмся на библиографию.
-Одна ссылка: \cite[с.~54]{Sokolov}\cite[с.~36]{Gaidaenko}.
-Две ссылки: \cite{Sokolov,Gaidaenko}.
-Много ссылок: %\cite[с.~54]{Lermontov,Management,Borozda} % такой «фокус» вызывает biblatex warning относительно опции sortcites, потому что неясно, к какому источнику относится уточнение о страницах, а bibtex об этой проблеме даже не предупреждает
-\cite{Lermontov,Management,Borozda,Marketing,Constitution,FamilyCode,Gost.7.0.53,Razumovski,Lagkueva,Pokrovski,Sirotko,Lukina,Methodology,Encyclopedia,Nasirova,Berestova,Kriger}.
-И~ещё немного ссылок:
-\cite{Article,Book,Booklet,Conference,Inbook,Incollection,Manual,Mastersthesis,Misc,Phdthesis,Proceedings,Techreport,Unpublished}.
-\cite{medvedev2006jelektronnye, CEAT:CEAT581, doi:10.1080/01932691.2010.513279,Gosele1999161,Li2007StressAnalysis, Shoji199895,test:eisner-sample,test:eisner-sample-shorted,AB_patent_Pomerantz_1968,iofis_patent1960}
-
-%Попытка реализовать несколько ссылок на конкретные страницы для стандартной реализации:[\citenum{Sokolov}, с.~54; \citenum{Gaidaenko}, с.~36].
-
-%Несколько источников мультицитата (только в biblatex)
-%\cites[vii--x, 5, 7]{Sokolov}[v"--~x, 25, 526]{Gaidaenko} поехали дальше
-
-Ссылки на собственные работы:~\cite{vakbib1, confbib1}
-
-Сошлёмся на приложения: Приложение \ref{AppendixA}, Приложение \ref{AppendixB2}.
-
-Сошлёмся на формулу: формула \eqref{eq:equation1}.
-
-Сошлёмся на изображение: рисунок \ref{img:knuth}.
-
-\section{Формулы} \label{sect1_3}
-
-Благодаря пакету \textit{icomma}, \LaTeX~одинаково хорошо воспринимает
-в~качестве десятичного разделителя и запятую ($3,1415$), и точку ($3.1415$).
-
-\subsection{Ненумерованные одиночные формулы} \label{subsect1_3_1}
-
-Вот так может выглядеть формула, которую необходимо вставить в~строку
-по~тексту: $x \approx \sin x$ при $x \to 0$.
-
-А вот так выглядит ненумерованая отдельностоящая формула c подстрочными
-и надстрочными индексами:
+Достоинством налагания FS-условия на пучок в накопительном кольце
+следующее: в соответствии с
+уравнениями~\cref{eq:TBMT_main,eq:TBMT_MDM,eq:TBMT_EDM}, векторы МДМ и
+ЭДМ угловых скоростей ортогональны, а потому в общей скорости
+прецессии они складываются квадратично, в связи с чем сдвиг частоты
+прецессии, связанный с ЭДМ, становится эффектом второго порядка
+величины:~\cite[стр.~5]{Mane:SpinWheel}
 \[
-(x_1+x_2)^2 = x_1^2 + 2 x_1 x_2 + x_2^2
+\w \propto \sqrt{\W_{MDM}^2 + \W_{EDM}^2} \approx \W_{MDM} + \frac{\W_{EDM}^2}{2\W_{MDM}}.
 \]
+Это обстоятельство значительно ухудшает чувствительность эксперимента.
 
-При использовании дробей формулы могут получаться очень высокие:
-\[
-  \frac{1}{\sqrt{2}+
-  \displaystyle\frac{1}{\sqrt{2}+
-  \displaystyle\frac{1}{\sqrt{2}+\cdots}}}
-\]
+Однако, заморозив спин в горизонтальной плоскости, единственная
+осающаяся МДМ компонента угловой скорости сонаправлена с ЭДМ
+компонентой, а значит складывается с ней линейно. Таким образом,
+чувствительность значительно улучшается.
 
-В формулах можно использовать греческие буквы:
-\[
-\alpha\beta\gamma\delta\epsilon\varepsilon\zeta\eta\theta\vartheta\iota\kappa%
-\lambda\\mu\nu\xi\pi\varpi\rho\varrho\sigma\varsigma\tau\upsilon\phi\varphi%
-\chi\psi\omega\Gamma\Delta\Theta\Lambda\Xi\Pi\Sigma\Upsilon\Phi\Psi\Omega
-\]
+\subsection{Реализация условия замороженности спина в накопительном кольце}
+Накопительные кольца могут быть классифицированы в три группы:
+\begin{enumerate}
+\item чисто магнитные (как COSY, NICA, etc),
+\item чисто электростатические (Brookhaven AGS Analog Ring),
+\item комбинированные.
+\end{enumerate}
 
-\def\slantfrac#1#2{ \hspace{3pt}\!^{#1}\!\!\hspace{1pt}/
-  \hspace{2pt}\!\!_{#2}\!\hspace{3pt}
-} %Макрос для красивых дробей в строчку (например, 1/2)
-Для красивых дробей (например, в индексах) можно добавить макрос
-\verb+\slantfrac+ и писать $\slantfrac{1}{2}$ вместо $1/2$.
+Ввиду уравнения~\eqref{eq:TBMT_MDM}, условие FS не может быть
+выполнено в чисто магнитном кольце.
 
-\subsection{Ненумерованные многострочные формулы} \label{subsect1_3_2}
+Для некоторого числа частиц, таких как протон, чья $G>0$, чисто
+электростатическое кольцо может быть использовано в рамках FS
+методологии ЭДМ эксперимента с пучком на так называемой ``магической''
+энергии, определяемой как $\gamma_{mag} = \sqrt{(1+G)/G}$.
 
-Вот так можно написать две формулы, не нумеруя их, чтобы знаки <<равно>> были
-строго друг под другом:
-\begin{align}
-  f_W & =  \min \left( 1, \max \left( 0, \frac{W_{soil} / W_{max}}{W_{crit}} \right)  \right), \nonumber \\
-  f_T & =  \min \left( 1, \max \left( 0, \frac{T_s / T_{melt}}{T_{crit}} \right)  \right), \nonumber
-\end{align}
+Для частиц с $G<0$ (таких как дейтрон),это невозможно, и необходимо
+использовать комбинированное кольцо. Для того, чтобы реализовать FS
+условие в комбинированном кольце, вводится ~\cite{BNL:Deuteron2008} радиальное электрическое
+поле величины
+\begin{equation}\label{eq:FS_Er}
+  E_r = \frac{GB_yc\beta\gamma^2}{1-G\beta^2\gamma^2}.
+\end{equation}
 
-Выровнять систему ещё и по переменной $ x $ можно, используя окружение
-\verb|alignedat| из пакета \verb|amsmath|. Вот так:
-\[
-    |x| = \left\{
-    \begin{alignedat}{2}
-        &&x, \quad &\text{eсли } x\geqslant 0 \\
-        &-&x, \quad & \text{eсли } x<0
-    \end{alignedat}
-    \right.
-\]
-Здесь первый амперсанд (в исходном \LaTeX\ описании формулы) означает
-выравнивание по~левому краю, второй "--- по~$ x $, а~третий "--- по~слову
-<<если>>. Команда \verb|\quad| делает большой горизонтальный пробел.
-
-Ещё вариант:
-\[
-    |x|=
-    \begin{cases}
-    \phantom{-}x, \text{если } x \geqslant 0 \\
-    -x, \text{если } x<0
-    \end{cases}
-\]
-
-Кроме того, для  нумерованых формул \verb|alignedat| делает вертикальное
-выравнивание номера формулы по центру формулы. Например, выравнивание
-компонент вектора:
+\section{Методы, основанные на FS-методологии} \label{sect1_2}
+\subsection{Метод BNL FS}
+BNL FS метод, предложенный коллаборацией, занимающейся разработкой
+метода измерения ЭДМ в накопительном кольце в Брукхейвенской
+Национальной Лаборатории (США) в 2008 году,~\cite{BNL:Deuteron2008}
+это метод для комбинированного кольца. Пучок продольно-поляризованных
+дейтронов инжектируется в кольцо; с помощью поляриметрии наблюдается
+его спин-прецессияв вертикальной и горизонтальной плоскостях; ЭДМ
+сигнал --- это изменение вертикальной компоненты поляризации со
+временем, выражаемое как:~\cite[стр.~8]{BNL:Deuteron2008}
 \begin{equation}
- \label{eq:2p3}
- \begin{alignedat}{2}
-{\mathbf{N}}_{o1n}^{(j)} = \,{\sin} \phi\,n\!\left(n+1\right)
-         {\sin}\theta\,
-         \pi_n\!\left({\cos} \theta\right)
-         \frac{
-               z_n^{(j)}\!\left( \rho \right)
-              }{\rho}\,
-           &{\boldsymbol{\hat{\mathrm e}}}_{r}\,+   \\
-+\,
-{\sin} \phi\,
-         \tau_n\!\left({\cos} \theta\right)
-         \frac{
-            \left[\rho z_n^{(j)}\!\left( \rho \right)\right]^{\prime}
-              }{\rho}\,
-            &{\boldsymbol{\hat{\mathrm e}}}_{\theta}\,+   \\
-+\,
-{\cos} \phi\,
-         \pi_n\!\left({\cos} \theta\right)
-         \frac{
-            \left[\rho z_n^{(j)}\!\left( \rho \right)\right]^{\prime}
-              }{\rho}\,
-            &{\boldsymbol{\hat{\mathrm e}}}_{\phi}\:.
-\end{alignedat}
+  \Delta P_V = P\frac{\w_{edm}}{\W}\sin\bkt{\W t + \Theta_0},
 \end{equation}
+где $\W = \sqrt{\w_{edm}^2 + \w_a^2}$, $\w_a,~\w_{edm}$ угловые
+скорости вызываемые, соответственно, магнитным и электрическим
+дипольными моментами.
 
-Ещё об отступах. Иногда для лучшей <<читаемости>> формул полезно
-немного исправить стандартные интервалы \LaTeX\ с учётом логической
-структуры самой формулы. Например в формуле~\ref{eq:2p3} добавлен
-небольшой отступ \verb+\,+ между основными сомножителями, ниже
-результат применения всех вариантов отступа:
-\begin{align*}
-\backslash! &\quad f(x) = x^2\! +3x\! +2 \\
-  \mbox{по-умолчанию} &\quad f(x) = x^2+3x+2 \\
-\backslash, &\quad f(x) = x^2\, +3x\, +2 \\
-\backslash{:} &\quad f(x) = x^2\: +3x\: +2 \\
-\backslash; &\quad f(x) = x^2\; +3x\; +2 \\
-\backslash \mbox{space} &\quad f(x) = x^2\ +3x\ +2 \\
-\backslash \mbox{quad} &\quad f(x) = x^2\quad +3x\quad +2 \\
-\backslash \mbox{qquad} &\quad f(x) = x^2\qquad +3x\qquad +2
-\end{align*}
+Налагая радиальное магнитное поле $E_r$~\eqref{eq:FS_Er}, ожидается
+уменьшение компоненты $\w_a$ по крайней мере на фактор $10^9$; ввиду
+малости величины гипотезируемой $\w_{edm}$, $\Delta P_V \approx P
+\w_{edm} t$, и максимальная величина $\Delta P_V$ возрастает в $10^9$.
 
-Можно использовать разные математические алфавиты:
-\begin{align}
-\mathcal{ABCDEFGHIJKLMNOPQRSTUVWXYZ} \nonumber \\
-\mathfrak{ABCDEFGHIJKLMNOPQRSTUVWXYZ} \nonumber \\
-\mathbb{ABCDEFGHIJKLMNOPQRSTUVWXYZ} \nonumber
-\end{align}
+Ожидаемая чувствительность эксперимента $10^{-29}~e\cdot cm$ за $10^7$
+секунд (6 месяцев) полного времени измерения. На этом уровне
+чувствительности, асимметрия сечения $\varepsilon_{LR} \approx 5\cdot
+10^{-6}$ для наименьших практически реализуемых значений
+$\w_a$.~\cite[стр.~18]{BNL:Deuteron2008} Последнее обстоятельство
+ставит серьёзную проблему для поляриметрии.~\cite{Mane:SpinWheel} Один
+из вариантов её решения лежит в применении внешнего радиального
+магнитного поля и измерении обзей частоты прецессии засчёт МДМ и ЭДМ
+вместе. Это основа так называемого метода Spin Wheel, о котором в
+следующем разделе.
 
-Посмотрим на систему уравнений на примере аттрактора Лоренца:
-
+Единственный известный систематический эффект спиновой динамики
+первого порядка это присутствие ненулевой средней вертикальной
+компоненты электрического поля $\avg{E_V}$. В этом случае, спин будет
+прецессировать вокруг радиального направления с частотой~\cite[стр.~11]{BNL:Deuteron2008}
 \[
-\left\{
-  \begin{array}{rl}
-    \dot x = & \sigma (y-x) \\
-    \dot y = & x (r - z) - y \\
-    \dot z = & xy - bz
-  \end{array}
-\right.
+\w_{syst} \approx \frac{\mu\avg{E_V}}{\beta c\gamma^2}.
+\]
+Здесь важно рассмотреть два обстоятельства:
+\begin{itemize}
+\item присутствие $\avg{E_V}\neq 0$ вызвано ошибкой юстировки
+  элементов ускорителя;
+\item этот систематический эффект меняет знак при инжекции пучка в
+  обратном направлении.
+\end{itemize}
+Последнее обстоятельство является причиной структуры инжекции пучка
+использованной в этом методе (сначала по-часовой, потом
+против-часовой; CW/CCW). Хотя $\w_{syst}$ меняет знак при смене
+направления движения пучка , эта методология тем не менее не учитывает
+его \emph{величину}. В разделах~\ref{sec:systematic_error-fake-signal} и~\ref{sec:simulation-fake_signal}, мы
+показываем, что при реалистичной величине ошибки установки
+спин-ротаторов 100 мкм, частота МДМ прецессии вокруг радиальной оси
+находится на уровне 50--100 рад/сек.~\cite{Senichev:FDM} В связи с
+этим, невозможно использовать данную методологию в её оригинальном варианте.
+
+\subsection{Spin Wheel концепция}
+Озвученные выше проблемы с поляриметрией и высокой скоростью прецессии
+решаются в Spin Wheel (SW) модификации, предложенной проф. И. Коопом
+(Новосибирский Государственный Университет). Основная идея метода в
+следующем: сначала, обеспечивается условие замороженного спина; затем
+включается радиальное магнитное поле величины $B_x$, достаточно сильное чтобы
+вызвать вращение спина с частотой порядка 1 Гц. Поскольку поле
+радиальное, вызванная им МДМ прецессия сонаправлена с ЭДМ, а значит
+они складываются линейно: $\w \propto \W_{MDM} + \W_{EDM}$.
+
+ЭДМ вклад вычисляется сравнением циклов с обратными знаками $B_x$:~\cite[стр.~1963]{Koop:IPAC13}
+\[
+\W_{EDM} = \frac{\W_x(+B_x) + \W_x(-B_x)}{2}.
 \]
 
-А для вёрстки матриц удобно использовать многоточия:
-\[
-\left(
-  \begin{array}{ccc}
-    a_{11} & \ldots & a_{1n} \\
-    \vdots & \ddots & \vdots \\
-    a_{n1} & \ldots & a_{nn} \\
-  \end{array}
-\right)
-\]
+Внешнее поле также вызовет разделение орбит
+пучков.~\cite[стр.~1963]{Koop:IPAC13} Это разделение может быть
+измерено на уровне пико-метров SQUID магнетометрами; его предлагается
+использовать для калибровки внешнего поля.
 
-\subsection{Нумерованные формулы} \label{subsect1_3_3}
+Поскольку из-за внешнего поля прецессия вокруг радиальной оси на 10
+порядков выше чем в оригинальном предложении, значительно упрощается
+задача для поляриметрии. Однако, существуют сомнения в возможности
+измерить вызываемое внешним полем разделение орбит даже при помощи SQUIDов.
 
-А вот так пишется нумерованая формула:
-\begin{equation}
-  \label{eq:equation1}
-  e = \lim_{n \to \infty} \left( 1+\frac{1}{n} \right) ^n
-\end{equation}
+Также, проблема паразитного поля, вызванного ошибкой юстировки, не решена.
 
-Нумерованых формул может быть несколько:
-\begin{equation}
-  \label{eq:equation2}
-  \lim_{n \to \infty} \sum_{k=1}^n \frac{1}{k^2} = \frac{\pi^2}{6}
-\end{equation}
+\subsection{Метод Frequency Domain}
+Методология Frequency Domain (далее FDM)~\cite{Senichev:FDM} была разработана специально для решения проблемы неточности установки магнитов, и возникающего в связи с этим паразитного МДМ вращения спина. Как было обозначено выше, частота вращения спина в вертикальной плоскости, связанная с магнитным дипольным моментом, при реалистичной ошибке юстировки, находится на уровне 8--16 Гц, что делает невозможным наблюдение медленного нарастания вертикальной компоненты поляризации, связанное с наличием у частицы электрического дипольного момента, как предполагается оригинальным BNL FS методом. В FDM, ЭДМ-эффект вычисляется путём сравнения комбинированной (МДМ + ЭДМ) частоты прецессии, наблюдаемой при циркуляции пучка в прямом и обратном направлениях. Поскольку при смене полярности ведущего поля $\vec B \mapsto -\vec B$, $\vec\beta \mapsto -\vec\beta$, и $\vec E \mapsto \vec E$:
+\begin{subequations}
+  \begin{align}
+    \w_x^{CW/CCW} &= \w_x^{MDM, CW/CCW} + \w_x^{EDM, CW/CCW}, \\
+    \w_x^{MDM, CW} &= -\w_x^{MDM, CCW} \equiv \w_x^{MDM}, \label{eq:FDM_CW_CCW_MDM} \\
+    \w_x^{EDM, CW} &= \w_x^{EDM, CCW} \equiv \w_x^{EDM},
+    \intertext{поэтому, ЭДМ эстиматор}
+    \hat\w_x^{EDM} &:= \frac12\bkt{\w_x^{CW} + \w_x^{CCW}} \label{eq:FDM_estimator} \\
+                  &= \w_x^{EDM} + \underbrace{\frac12\bkt{\w_x^{MDM, CW} + \w_x^{MDM, CCW}}}_{\varepsilon \to 0}.
+  \end{align}
+\end{subequations}
 
-Впоследствии на формулы (\ref{eq:equation1}) и (\ref{eq:equation2}) можно ссылаться.
+Для того, чтобы гарантировать малость $\varepsilon$ по сравнению с требуемой точностью измерений, т.е., что уравнение~\eqref{eq:FDM_CW_CCW_MDM} выполняется достаточно точно, была разработана специальная процедура смены полярности ведущего поля, описанная в разделе~\ref{sec:field_flipping}.
 
-Сделать так, чтобы номер формулы стоял напротив средней строки, можно,
-используя окружение \verb|multlined| (пакет \verb|mathtools|) вместо
-\verb|multline| внутри окружения \verb|equation|. Вот так:
-\begin{equation} % \tag{S} % tag - вписывает свой текст
-  \label{eq:equation3}
-    \begin{multlined}
-        1+ 2+3+4+5+6+7+\dots + \\
-        + 50+51+52+53+54+55+56+57 + \dots + \\
-        + 96+97+98+99+100=5050 
-    \end{multlined}
-\end{equation}
+\subsubsection{Смена полярности ведущего поля}\label{sec:field_flipping}
+Здесь будет описание процедуры когда я её пойму.
 
-Используя команду \verb|\labelcref| из пакета \verb|cleveref|, можно
-красиво ссылаться сразу на несколько формул
-(\labelcref{eq:equation1,eq:equation3,eq:equation2}), даже перепутав
-порядок ссылок \verb|(\labelcref{eq:equation1,eq:equation3,eq:equation2})|.
+Также отметим, что существуют методы измерения ЭДМ элементарных частиц, не основанные на принципе замороженного спина; например~\cite{COSY:SpinTuneMapping}
+
+\section{Анализ систематических ошибок} \label{sec:systematic_error}
+\subsection{Возмущение оси прецессии спина частицы засчёт бетатронного движения}
+Motivation for the analysis of this problem is the general concern that a scalar value (effective Lorentz factor) cannot account for the jittering of the beam particles' spin precession axes, which definitely occurs as a result of the betatron motion, during which the particles experience varying RF electro-magnetic fields. That is, the SPAs form a ''spin field'' [Shatunov terminology] about the invariant spin axis defined on the reference (closed) orbit.
+
+This fact invalidates the structural part of our statistical model, used to obtain the spin precession frequency from polarimetry data, introducing the model specification systematic error.
+
+But this error is negligible compared to the plain polarimetry error of 3\%, hence in our model we will assume that the spins of all beam particles precess about the invariant spin axis, and consider only their spin tune variation 
+\subsection{Декогеренция спинов частиц пучка в идеальном и неидеальном кольцах}
+\subsubsection{Требования к времени когеренции пучка}
+\subsubsection{Причины возникновения декогеренции}
+\subsubsection{Подавление декогеренции с помощью секступольных полей}
+\subsection{Фальш-сигнал}\label{sec:systematic_error-fake_signal}
+Motivation for studying the effect. Analytical estimates of the MDM precession frequency about the radial axis. 
