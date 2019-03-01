@@ -10,6 +10,7 @@
 \input{Dissertation/userpackages}   % Пакеты для специфических пользовательских задач
 
 \input{Dissertation/setup}      % Упрощённые настройки шаблона
+								% Я ПОМЕНЯЛ bibliosel НА 0, так библиография строится
 
 \input{common/newnames}         % Новые переменные, для всего проекта
 
@@ -20,7 +21,7 @@
 \input{Dissertation/userstyles} % Стили для специфических пользовательских задач
 
 %%% Библиография. Выбор движка для реализации %%%
-\ifnumequal{\value{bibliosel}}{0}{% Я ПОМЕНЯЛ bibliosel НА 0, так библиография строится
+\ifnumequal{\value{bibliosel}}{0}{% здесь выберется ПЕРВЫЙ вариант, я поменял движок в common/setup.tex
     \input{biblio/predefined}   % Встроенная реализация с загрузкой файла через движок bibtex8
 }{
     \input{biblio/biblatex}     % Реализация пакетом biblatex через движок biber
