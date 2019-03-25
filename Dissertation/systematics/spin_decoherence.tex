@@ -128,7 +128,44 @@ S_{sext} = \frac{1}{B\rho} \pddx{B_y}[x][2],
 секступолей, помещённых в максимумы функций: $\beta_x$, $\beta_y$ для подавления
 X-,Y-декогеренции, и $D_0$ для D-декогеренции.
 
-\subsection{Симуляция эксперимента по подавлению декогеренции}
+\subsection{Симуляция секступольного подавления декогеренции в идеальном ускорителе}
+\hl{ТЕКСТ}
+\begin{figure}[!h]
+	\centering
+	\subbottom[В горизонтальном направлении]{%
+		\includegraphics[height=.35\paperheight]{images/decoh_sim/spin_tune_decoh_x_offset}}
+	\subbottom[В вертикальном направлении]{%
+		\includegraphics[height=.35\paperheight]{images/decoh_sim/spin_tune_decoh_y_offset}}
+\end{figure}
+\begin{figure}[!h]\centering
+	\contsubbottom[По энергии]{%
+		\includegraphics[height=.35\paperheight]{images/decoh_sim/spin_tune_decoh_d_offset}}
+	\legend{Цветом выделены зависимости при нулевом (чёрный) и оптимизированном (красный) значениях градиента секступоля}
+	\caption{Зависимость спин-тюна частицы от её смещения от референсной частицы.}
+\end{figure}
+
+\subsection{Переход декогеренции из горизонтальной плоскости в вертикальную, при появлении неидеальностей}
+\hl{ТЕКСТ}
+
+\begin{figure}[h!]
+	\centering
+	\subbottom[Без секступолей]{%
+		\includegraphics[height=.35\paperheight]{images/decoh_sim/SX_decoh_20sec_unopt}}
+	\subbottom[С секступолями]{%
+		\includegraphics[height=.35\paperheight]{images/decoh_sim/SX_decoh_20sec_opt}}
+	\caption{Стандартное отклонение радиальной компоненты спин-вектора частицы от спин-вектора референсной частицы}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\subbottom[Без секступолей]{%
+		\includegraphics[height=.35\paperheight]{images/decoh_sim/SY_decoh_20sec_unopt}}
+	\subbottom[С секступолями]{%
+		\includegraphics[height=.35\paperheight]{images/decoh_sim/SY_decoh_20sec_opt}}
+	\caption{Стандартное отклонение вертикальной компоненты спин-вектора частицы от спин-вектора референсной частицы}
+\end{figure}
+
+\subsection{Симуляция эксперимента по подавлению декогеренции  неидеальном ускорителе}
 При проведении нижеследующих тестов симулировалась инжекция
 плоского, гауссовского пучка в структуру с замороженным
 спином. E+B спин-ротаторы в структуре были установлены со случайно распределённым углом наклона вокруг оптической оси, взятым из распределения $N(0, 5\cdot10^{-4})$ радиан.
@@ -268,3 +305,4 @@ f\cdot t + \phi)$, оцениваются все три параметра $(\ha
 	\includegraphics[width=\linewidth]{images/decoh_sim/mean_n_bar_vs_spin_tune}
 	\caption{Средние уровни поперечных компонент осей стабильного спина частиц, в зависимости от уровня их спин-тюна.\label{decoh:fig:nbar_vs_ST}}
 \end{figure}
+
