@@ -4,6 +4,9 @@
 \usepackage{xfrac}
 \usepackage{siunitx}
 
+\usepackage{tikz} % used in the
+\usepackage{pgfplots} % statistics appendix
+
 \renewcommand{\hl}[1]{\colorbox{yellow}{#1}}
 
 \let\oldvec\vec
@@ -32,3 +35,5 @@
 \DeclareDocumentCommand{\ddt}{m}{\frac{\mathrm{d} {#1}}{\mathrm{d} t}}
 \DeclareDocumentCommand{\avg}{mO{}}{\langle #1\rangle_{#2}}
 \DeclareDocumentCommand{\SD}{m}{\sigma\bkt*{#1}}
+\DeclareDocumentCommand{\var}{m}{\sigma^2\bkt*{#1}}
+\DeclareDocumentCommand{\Xpct}{mo}{\mathrm{E}\bkt*{#1\IfNoValueTF{#2}{}{|~ #2}}}
