@@ -344,12 +344,12 @@ x_{01}  & = \frac{1}{\dtnd}\int_{-\dtnd/2}^{+\dtnd/2}\cos^2(\w\cdot t)\rd t = \f
 	\caption{Выбранная информация Фишера, длительность измерений,
 		соответствующее отношение сигнал-шум.\label{tbl:FItot}}
 	\begin{tabular}{rrr}
-		\hline
-		Предел ИФ(\%) & длительность ($\times\LTd$) &  SNR \\ \hline
+		\toprule
+		Предел ИФ(\%) & длительность ($\times\LTd$) &  SNR \\ \midrule
 		95 &                    3.0 &  0.4 \\
 		90 &                    2.3 &  1.1 \\
 		70 &                    1.2 &  5.5 \\
-		50 &                    0.7 & 11.7 \\ \hline
+		50 &                    0.7 & 11.7 \\ \bottomrule
 	\end{tabular}
 \end{table}
 
@@ -395,26 +395,30 @@ f_s\cdot T_{tot}$. Ожидаемая длительность цикла 1000 �
 		\centering
 		\caption{Параметры модели частоты событий детекторов\label{tbl:DetCntRtParam}}
 		\begin{tabular}[t]{cccc}
-			\hline
-			&   Левый   &     Правый     &  \\ \hline
+			\toprule
+			&   Левый   &     Правый     &  \\ 
+			\midrule
 			$\phi$  & $-\pi/2$ &   $+\pi/2$    &   рад   \\
 			$\w$ &  \multicolumn{2}{c}{3}   & рад/сек \\
 			$P$    & \multicolumn{2}{c}{0.4}  &  \\
 			$\LTd$  & \multicolumn{2}{c}{721}  &   сек   \\
 			$\LTb$  & \multicolumn{2}{c}{721}  &   сек   \\
-			$N_0(0)$ & \multicolumn{2}{c}{6730} &  \\ \hline
+			$N_0(0)$ & \multicolumn{2}{c}{6730} &  \\ 
+			\bottomrule
 		\end{tabular}
 	\end{minipage}%
 	\begin{minipage}[t]{.5\linewidth}
 		\centering
 		\caption{Результаты фитирования\label{tbl:FitRes}}
 		\begin{tabular}[t]{crrc}
-			\hline
-			& Оценка &             Ст. Ошибка &  Единицы   \\ \hline
+			\toprule
+			& Оценка &             Ст. Ошибка &  Единицы   \\ 
+			\midrule
 			$\Asym(0)$ &   0.400 & $\vp{9.03}{-5}$ &         \\
 			$\lamd$   &  -0.001 & $\vp{7.86}{-7}$ &  1/сек  \\
 			$\w$  &   3.000 & $\vp{7.55}{-7}$ & рад/сек \\
-			$\phi$   &  -1.571 & $\vp{2.25}{-2}$ &   рад   \\ \hline
+			$\phi$   &  -1.571 & $\vp{2.25}{-2}$ &   рад   \\ 
+			\bottomrule
 		\end{tabular}
 	\end{minipage}
 \end{table}
