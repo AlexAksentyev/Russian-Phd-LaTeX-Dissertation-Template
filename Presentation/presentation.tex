@@ -7,7 +7,9 @@
 
 \graphicspath{{../images/}{images/}} 
 
-
+\usepackage{../Dissertation/phdstyle}
+\usepackage{forest}
+\newcommand{\ntrn}{n_{turn}}
 
 % \usetheme[secheader]{Boadilla}
 % \usecolortheme{seahorse}
@@ -40,19 +42,32 @@
 
 \newcommand{\itemi}{\item[\checkmark]}
 
-%\title{\small{Название презентации}}
-\title{\small{\thesisTitle}}
-\author{\small{%
-\emph{Выступающий:}~\thesisAuthorShort\\%
-\emph{Руководитель:}~\supervisorARegaliaShort~\supervisorAFioShort
-}\\%
-\vspace{30pt}%
-\thesisOrganization%
-\vspace{20pt}%
-}
-\date{\small{\thesisCity, \thesisYear}}
+%%\title{\small{Название презентации}}
+%\title{\small{\thesisTitle}}
+%\author{\small{%
+%\emph{Выступающий:}~\thesisAuthorShort\\%
+%\emph{Руководитель:}~\supervisorARegaliaShort~\supervisorAFioShort
+%}\\%
+%\vspace{30pt}%
+%\thesisOrganization%
+%\vspace{20pt}%
+%}
+%\date{\small{\thesisCity, \thesisYear}}
 
 \begin{document}
+	\title{\small{\thesisTitle}}
+	\author{\small{%
+			\begin{tabular}{lll}
+				\emph{Выступающий:} & & \thesisAuthorShort\\
+				\emph{Руководитель:} & \supervisorARegaliaShort & \supervisorAFioShort \\
+				& \supervisorBRegaliaShort & \supervisorBFioShort
+			\end{tabular}
+		}\\%
+		\vspace{30pt}%
+		\thesisOrganization%
+		\vspace{20pt}%
+	}
+	\date{\small{\thesisCity, \thesisYear}}
 
 \maketitle
 
@@ -69,7 +84,25 @@
   \item \textbf{Актуальность:} исследование велось в рамках проекта, посвящённого поиску ЭДМ элементарных частиц
 \end{itemize}
 \end{frame}
-
+\begin{frame}\frametitle{Классификация методологий}
+\begin{forest}
+	[SR EDM
+	[Замороженный\\ спин, align=center
+	[Пространственная\\ область, align=center
+	[BNL FS]
+	[D-MR]
+	]
+	[Частотная\\ область, align=center
+	[SW]
+	[FDM]
+	]
+	]
+	[Незамороженный\\ спин, align=center
+	[Частично-\\замороженный\\спин, align=center]
+	]
+	]
+\end{forest}
+\end{frame}
 \begin{frame}
 \frametitle{Проблемы}
 \begin{itemize}
@@ -79,7 +112,27 @@
   \item Смена полярности ведущего поля ускорителя
 \end{itemize}
 \end{frame}
-
+\begin{frame}\frametitle{Общие проблемы измерения ЭДМ методом накопительного кольца}\framesubtitle{И их канонические решения}
+\begin{minipage}[t]{.5\linewidth}
+	\underline{\textbf{Спин-Колесо}}
+	\begin{itemize}
+		\item Возмущения полей
+		\item Бетатронное движение
+		\item[*] Обе вызывают возмущение направления $\nbar$
+	\end{itemize}
+\end{minipage}~%
+\begin{minipage}[t]{.5\linewidth}
+	\underline{\textbf{Частное решение}}
+	\begin{itemize}
+		\item Спиновая декогеренция
+		%% \item Variation of the injection point (?)
+		\item[Р:] Секступольные поля
+		\item Неидеальности машины
+		\item[Р:] CW/CCW-инжекция
+	\end{itemize}
+\end{minipage}
+%% Of course, problems requiring the Spin Wheel solution automatically force us to the Frequency Domain.
+\end{frame}
 \begin{frame}
 \frametitle{План работ}
 \begin{enumerate}
@@ -127,7 +180,80 @@
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%% MAIN CONTENT %%%%%%%
-
+\begin{frame}\frametitle{Постановка проблемы}
+	\begin{itemize}
+		\item Решение Т-БМТ уравнения для вертикальной компоненты спина
+		\[
+		s_y(n_{turn}) = \sqrt{\bkt{\nbar_y\nbar_z}^2 + \nbar_x^2}\cdot\sin\bkt{2\pi\nu_s\cdot\ntrn + \delta}.
+		\]
+		\item Данные фитируются функцией
+		\[
+		f(\ntrn) = a\cdot \sin(b\cdot \ntrn + c), ~(a,b,c)=\const
+		\]
+		\item При значительной вариации $\nu_s$, $\nbar$ --- ошибка спецификации уравнения регрессии
+	\end{itemize}
+\end{frame}
+\begin{frame}\frametitle{Симуляция}
+	\includegraphics[width=\linewidth]{chapter2/BNL_lattice}
+\end{frame}
+\begin{frame}\frametitle{Симуляция}
+	\begin{minipage}[t]{.48\linewidth}
+		\textbf{Неидеальности\\ машины}
+		\includegraphics[width=1.2\linewidth, trim=80 10 0 0, clip]{images/magnet_tilting}
+		\begin{itemize}
+			\item $\alpha\sim N(\mu_i, 3\cdot10^{-4})^\circ$
+			\item $\mu_i$ симулирует Спин-Колесо 
+		\end{itemize}
+	\end{minipage}~~~~
+	\begin{minipage}[t]{.45\linewidth}
+		\textbf{Частицы}
+		\begin{itemize}
+			\item бетатронные колебания в вертикальной плоскости
+			\item $E_{FS}\neq E_{kin}\to E_{FS}$
+			\item[$\Rightarrow$] $\nbar_x\ll 1 \Rightarrow$ повышенная чувствительность к возмущениям
+		\end{itemize}
+	\end{minipage}
+\end{frame}
+\begin{frame}\frametitle{Анализ}
+	\begin{minipage}[t]{.5\linewidth}
+		\textbf{Данные}
+		\begin{itemize}
+			\item[TRK] данные трекера TR COSY Infinity
+			\item[GEN] вычислены по формуле, $\nbar$, $\nu_s$ вычислены на данном обороте
+			\item[IDL] как в GEN, но $\nbar = \avg{\nbar}$, $\nu_s = \avg{\nu_s}$ 
+		\end{itemize}
+	\end{minipage}~~~~
+	\begin{minipage}[t]{.5\linewidth}
+		\textbf{Сравнительные статистики}
+		\begin{itemize}
+			\item[$\epsilon_1(t)$] $= s_y^{gen}(t) - s_y^{idl}(t)$
+			\item[$\epsilon_2(t)$] $= s_y^{trk}(t) - s_y^{idl}(t)$
+		\end{itemize}
+%		\textbf{Что сделал}
+%		\begin{itemize}
+%			\item Оценил пригодность модели при фитировании данных $s_y^{trk}$, $s_y^{gen}$, $s_y^{idl}$
+%			\item Сравнил поведение стандартных отлклонений $\epsilon_1$, и $\epsilon_2$ относительно поведения $\sigma[\nbar]$
+%		\end{itemize}
+\end{minipage}
+\end{frame}
+\begin{frame}\frametitle{Результаты}
+	\includegraphics[width=\linewidth]{smp_sim/residual_SD_vs_SW(both)}
+\end{frame}
+\begin{frame}\frametitle{Результаты}
+	\includegraphics[width=\linewidth]{smp_sim/NBAR_variation_sd_vs_SW}
+\end{frame}
+\begin{frame}\frametitle{Выводы}
+	\begin{enumerate}
+		\item Влияние вариации $\nbar$ на качество фита незначительно, по сравнению с вариацией $\nu_s$
+		\item $\sigma[\epsilon_2] \ll \sigma[P_y]$, значит суперпозиция систематической ошибки со случайной ошибкой измерений поляризации не будет обладать статистически значимой систематичностью
+	\end{enumerate}
+\end{frame}
+\begin{frame}\frametitle{Выводы}
+	\begin{enumerate} \setcounter{enumi}{2}
+		\item $\sigma[\hat a, \hat b] < 10\%$, значит даже если вариация $\nbar$ будет достаточной, чтобы повлиять на $\hat a$, её эффект на $\hat b$ будет уменьшен как минимум в 10 раз
+		\item Этот систематический эффект контролируем. Увеличивая скорость вращения Спин-Колеса, мы непрерывно уменьшали амплитуду колебаний $\nbar$
+	\end{enumerate}
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Перспективы развития проекта}
