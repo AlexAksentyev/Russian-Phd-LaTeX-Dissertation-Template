@@ -8,14 +8,18 @@
 \graphicspath{{../images/}{images/}} 
 
 \usepackage{../Dissertation/phdstyle}
-\usepackage{forest}
+\usepackage[edges]{forest}
 \newcommand{\ntrn}{n_{turn}}
+
+\usepackage{animate}
 
 % \usetheme[secheader]{Boadilla}
 % \usecolortheme{seahorse}
 
 %\usetheme{Pittsburgh}
 %\usecolortheme{whale}
+
+\usetheme{Boadilla}
 
 \beamertemplatenavigationsymbolsempty
 
@@ -163,7 +167,7 @@
 		\end{itemize}
 	\end{enumerate}
 \end{frame}
-\begin{frame}
+\begin{frame} % Детальный разбор этого в презентацию добавлять не особенно хочется
 	\begin{enumerate}  \setcounter{enumi}{4}
 		\item \textbf{Спин-тюн эквивалентность частиц с одинаковыми эффективными Лоренц-факторами}
 		\begin{itemize}
@@ -180,7 +184,8 @@
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%% MAIN CONTENT %%%%%%%
-\begin{frame}\frametitle{Постановка проблемы}
+\begin{frame}\frametitle{Возмущения спиновой динамики}
+	\framesubtitle{Постановка проблемы}
 	\begin{itemize}
 		\item Решение Т-БМТ уравнения для вертикальной компоненты спина
 		\[
@@ -224,7 +229,7 @@
 		\end{itemize}
 	\end{minipage}~~~~
 	\begin{minipage}[t]{.5\linewidth}
-		\textbf{Сравнительные статистики}
+		\textbf{Сравнительные\\ статистики}
 		\begin{itemize}
 			\item[$\epsilon_1(t)$] $= s_y^{gen}(t) - s_y^{idl}(t)$
 			\item[$\epsilon_2(t)$] $= s_y^{trk}(t) - s_y^{idl}(t)$
@@ -244,7 +249,7 @@
 \end{frame}
 \begin{frame}\frametitle{Выводы}
 	\begin{enumerate}
-		\item Влияние вариации $\nbar$ на качество фита незначительно, по сравнению с вариацией $\nu_s$
+		\item Влияние вариации $\nbar$ на дисперсию невязки между идеальными данными, и трекерными, незначительно, по сравнению с вариацией $\nu_s$
 		\item $\sigma[\epsilon_2] \ll \sigma[P_y]$, значит суперпозиция систематической ошибки со случайной ошибкой измерений поляризации не будет обладать статистически значимой систематичностью
 	\end{enumerate}
 \end{frame}
@@ -254,11 +259,90 @@
 		\item Этот систематический эффект контролируем. Увеличивая скорость вращения Спин-Колеса, мы непрерывно уменьшали амплитуду колебаний $\nbar$
 	\end{enumerate}
 \end{frame}
+
+\begin{frame}\frametitle{Декогеренция спинов}% Здесь надо добавить (более качественную) анимацию декогеренции
+	\centering
+	\animategraphics[autoplay,loop,height=.8\paperheight]{1}{images/spin_decoh/spin_decoh-}{0}{5}
+\end{frame}
+\begin{frame}{Декогеренция спинов}
+	\framesubtitle{Причины}
+	\begin{minipage}{.65\linewidth}
+		\includegraphics[width=\linewidth]{chapter1/psp_diagram_betatron}
+	\end{minipage}%
+	\begin{minipage}{.4\linewidth}
+		\begin{itemize}
+			\item $\nu_s = \gamma G$
+			\item из-за разницы длин орбит, у частиц в пучке разная $\gamma_{eq}$ 
+		\end{itemize}
+	\end{minipage}
+\end{frame}
+\begin{frame}{Декогеренция спинов}
+	\framesubtitle{Подавление секступольными полями}
+	\begin{block}{Сдвиг равновесного уровня импульса}
+		$\Delta\delta_{eq} = \frac{\gamma_0^2}{\gamma_0^2\alpha_0 - 1}\bkt*{\frac{\delta_m^2}{2}\bkt{\alpha_1 - \alpha_0\gamma^{-2} + \gamma_0^{-4}} + \bkt{\frac{\Delta L}{L}}_\beta}$
+	\end{block}
+	\begin{block}{Эффекты секступольных полей}
+		\begin{forest}
+			forked edges,
+			for tree={edge={->},  rounded corners, grow'=0}
+			[{$S_{sext} = \frac{1}{B\rho} \pddx{B_y}[x][2]$}
+			[{$\Delta \alpha_{1,sext} = -\frac{S_{sext}D_0^3}{L}$}]
+			[{$\bkt{\frac{\Delta L}{L}}_{sext} = \mp \frac{S_{sext}D_0\beta_{x,y}\varepsilon_{x,y}}{L}$}]
+			]
+		\end{forest}
+	\end{block}
+\end{frame}
+\begin{frame}{Эффект секступольных полей}
+	\framesubtitle{Коэффициент сжатия орбиты}
+	\begin{tikzpicture}
+		\node (main) {\includegraphics[width=.7\linewidth]{decoh_sim/propdef/stune_vs_dkok_SS_D}};
+		\pause
+		\node (PS) at (main.east)[yshift=-2cm, xshift=-.8cm] {\includegraphics[width=.7\linewidth]{decoh_sim/propdef/long_phase_space_for_sext_settings_D}};
+	\end{tikzpicture}
+\end{frame}
+\begin{frame}{Эффект секступольных полей}
+	\framesubtitle{Длина орбиты}
+	\begin{tikzpicture}
+		\node (main) {\includegraphics[width=.7\linewidth]{decoh_sim/propdef/stune_vs_dkok_SS_Y}};
+		\pause
+		\node (PS) at (main.east)[yshift=-2cm, xshift=-.8cm] {\includegraphics[width=.7\linewidth]{decoh_sim/propdef/long_phase_space_for_sext_settings_Y}};
+	\end{tikzpicture}
+
+\end{frame}
+\begin{frame}{Выводы}
+	\begin{enumerate}
+		\item Сигнатура эффекта секступольных полей на коэффициент сжатия орбиты --- изменение функциональной зависимости $\avg{\nu_s}(\avg{\Delta K/K})$
+		\item \ldots~ на длины орбит частиц банча --- уменьшение дисперсии $\avg{\Delta K/K}$
+	\end{enumerate}
+\end{frame}
+\begin{frame}{Подавление декогеренции в идеальной структуре}\centering
+	\begin{tikzpicture}
+		\node (X) {\includegraphics[height=.5\paperheight]{decoh_sim/spin_tune_decoh_x_offset}};
+		\pause
+		\node (Y) at (X.east)[yshift=-1.7cm]{\includegraphics[height=.5\paperheight]{decoh_sim/spin_tune_decoh_y_offset}};
+		\pause
+		\node (D) at (X.center)[yshift=-2.3cm]{\includegraphics[height=.5\paperheight]{decoh_sim/spin_tune_decoh_d_offset}};
+	\end{tikzpicture}
+\end{frame}
+\begin{frame}{Декогеренция в неидеальной структуре}
+	\begin{tikzpicture}
+		\node (imgX) {\includegraphics[width=.65\linewidth]{decoh_sim/SX_decoh_20sec_unopt}};
+		\pause
+		\node (imgY) at (imgX.south east)[yshift=1cm]{\includegraphics[width=.65\linewidth]{decoh_sim/SY_decoh_20sec_unopt}};
+	\end{tikzpicture}
+\end{frame}
+\begin{frame}{Включаем секступоли}
+\begin{tikzpicture}
+\node (imgX) {\includegraphics[width=.65\linewidth]{decoh_sim/SX_decoh_20sec_opt}};
+\pause
+\node (imgY) at (imgX.south east)[yshift=1cm]{\includegraphics[width=.65\linewidth]{decoh_sim/SY_decoh_20sec_opt}};
+\end{tikzpicture}
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Перспективы развития проекта}
 \begin{itemize}
-  \item Поляризованная программа на ускорительном комплексе НИКА, Дубна
+  \item Поляризованная программа на ускорительном комплексе НИКА, ОИЯИ, Дубна
 \end{itemize}
 \end{frame}
 
