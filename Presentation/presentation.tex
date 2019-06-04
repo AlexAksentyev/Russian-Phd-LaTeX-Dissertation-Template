@@ -338,6 +338,70 @@
 \node (imgY) at (imgX.south east)[yshift=1cm]{\includegraphics[width=.65\linewidth]{decoh_sim/SY_decoh_20sec_opt}};
 \end{tikzpicture}
 \end{frame}
+\begin{frame}{МДМ фальш-сигнал}
+	\begin{block}{Величина}
+		$\SD{\W_x^{MDM}} = \frac{q}{m\gamma}\frac{G+1}{\gamma}\frac{\SD{B_x}}{\sqrt{n}}$
+	\end{block}
+	\begin{block}{Вопросы, требующие рассмотрения}
+		\begin{itemize}
+			\item Является ли ошибка линейной, т.е. $\W_x^{MDM} = f(\avg{\Theta_{tilt}})$?
+			\item Является ли ошибка симметричной, относительно обращения движения частицы, т.е. $|\W_x^{CW}| = |\W_x^{CCW}|$?
+		\end{itemize}
+	\end{block}
+\end{frame}
+\begin{frame}{Рассматриваемая структура}
+	\begin{tikzpicture}
+		\node (lat) {\includegraphics[width=.8\linewidth]{chapter2/BNL_lattice}};
+		\pause
+		\node (tilt) at (lat.center)[xshift=2.5cm,yshift=-1.6cm] {\includegraphics[width=.77\linewidth,trim = 30 0 0 0, clip]{images/magnet_tilting}};
+		\pause
+		\node (sim) at (lat.center)[xshift=-2cm, yshift=2cm] {
+			\colorbox{white}{
+				\begin{minipage}{.5\linewidth}
+					\begin{itemize}
+						\item 11 симуляций
+						\item наколнял только спин-ротаторы
+						\item $\alpha\sim N(\mu_0\cdot(i-5), \sigma_0)$
+						\item $\mu_0 = 10\cdot\sigma_0 = 10^{-4}$ рад
+						\item ряды Тэйлора 3-го порядка
+						\item вычислялась $\W_x^{CO}$
+					\end{itemize}
+				\end{minipage}
+			}
+		};
+	\end{tikzpicture}
+\end{frame}
+\begin{frame}{Линейность}\centering
+	\includegraphics[width=.8\linewidth]{fake_signal_sim/linearity_test_shifting_gauss_freq}
+\end{frame}
+\begin{frame}{Симметричность}
+\hspace*{-.9cm}
+	\begin{tikzpicture}
+		\node (first) {\includegraphics[width=.8\linewidth]{fake_signal_sim/linearity_test_shifting_gauss_rel_diff}};
+		\pause
+		\node (second) at (first.center)[xshift=2.5cm,yshift=-1.3cm] {\includegraphics[width=.8\linewidth]{fake_signal_sim/linearity_test_compensated+microrad_rel_diff}};
+	\end{tikzpicture}
+	
+\end{frame}
+\begin{frame}{Выводы}
+	\begin{block}{$\sigma_\theta = 10^{-4}$ рад, $n=100$ элементов}
+		\begin{tabular}{r|r}
+			\hline
+			$\w^{max}$ [рад/сек] & $P(\W_x^{MDM} < \w^{max})$\\
+			\hline
+			50  & 67\%\\
+			100 & 95\%\\
+			\hline
+		\end{tabular}
+	\end{block}
+	\begin{block}{Свойства}
+		\begin{enumerate}
+			\item Линейность
+			\item Асимметричность, вероятно связанная с различием референсных орбит CW и CCW пучков
+			\item Асимметричность 
+		\end{enumerate}
+	\end{block}
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Перспективы развития проекта}
