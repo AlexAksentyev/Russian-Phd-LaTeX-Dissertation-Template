@@ -10,8 +10,10 @@
 \usepackage{../Dissertation/phdstyle}
 \usepackage[edges]{forest}
 \newcommand{\ntrn}{n_{turn}}
+\newcommand{\gef}{\gamma_{eff}}
 
 \usepackage{animate}
+\usepackage{tcolorbox}
 
 % \usetheme[secheader]{Boadilla}
 % \usecolortheme{seahorse}
@@ -162,7 +164,7 @@
 		\end{itemize}
 		\item \textbf{Смена полярности ведущего поля}
 		\begin{itemize}
-			\item Алгоритм калибровки
+			\item Калибровка эффективного Лоренц-фактора
 			\item Результаты симуляции
 		\end{itemize}
 	\end{enumerate}
@@ -174,7 +176,7 @@
 			\item Формулировка A
 			\item Формулировка B
 		\end{itemize}
-		\item \textbf{Структуры колец для поиска ЭДМ методом замороденного спина}
+		\item \textbf{Структуры колец для поиска ЭДМ методом замороженного спина}
 		\begin{itemize}
 			\item BNL FS
 			\item QFS 6.3
@@ -242,10 +244,11 @@
 \end{minipage}
 \end{frame}
 \begin{frame}\frametitle{Результаты}
-	\includegraphics[width=\linewidth]{smp_sim/residual_SD_vs_SW(both)}
-\end{frame}
-\begin{frame}\frametitle{Результаты}
-	\includegraphics[width=\linewidth]{smp_sim/NBAR_variation_sd_vs_SW}
+	\begin{tikzpicture}
+		\node (resid) {\includegraphics[width=.7\linewidth]{smp_sim/residual_SD_vs_SW(both)}};
+		\pause
+		\node (nbar) at (resid.center)[xshift=2.5cm,yshift=-2cm]{\includegraphics[width=.7\linewidth]{smp_sim/NBAR_variation_sd_vs_SW}};
+	\end{tikzpicture}	
 \end{frame}
 \begin{frame}\frametitle{Выводы}
 	\begin{enumerate}
@@ -401,6 +404,54 @@
 			\item Асимметричность 
 		\end{enumerate}
 	\end{block}
+\end{frame}
+\begin{frame}{Смена полярности ведущего поля}
+	\framesubtitle{Зачем?}\centering
+	\begin{tikzpicture}
+		\node (null) {\includegraphics[height=.7\paperheight, trim=5 145 0 135, clip]{images/magnet_tilted-0.pdf}};
+		\pause
+		\node (first) at (null.center) {\includegraphics[height=.7\paperheight, trim=5 145 0 135, clip]{images/magnet_tilted-1.pdf}};
+		\pause
+		\node (final) at (first.center) {\includegraphics[height=.7\paperheight, trim=5 145 0 135, clip]{images/magnet_tilted-2.pdf}};
+		\pause
+		\node (rev) at (final.center) {\includegraphics[height=.7\paperheight, trim=5 145 0 135, clip]{images/magnet_tilted-3.pdf}};
+		\node (eq) at (rev.south east)[yshift=.4cm] {$\hat\W_{edm} = \frac12\bkt{\W_x^{CW} + \W_x^{CCW}}$};
+	\end{tikzpicture}
+\end{frame}
+\begin{frame}{В чём проблема?}
+	\begin{itemize}[<+->]
+		\item $\W_x^{MDM} = \frac qmGB_x$
+		\item На самом деле, нужно восстановить $\W_x^{MDM}$, а не $B_x$
+		\item Востановление $B_x^{CW} = -B_x^{CCW}$ не достаточно, т.к. точка инжекции и $\nu_s$ меняются от цикла к циклу
+		\item К тому же, асимметрия структуры в отношении спин-динамики (см. выше)
+		\item[$\Rightarrow$] Нужно восстанавливать эффективный Лоренц-фактор пучка
+	\end{itemize}
+\end{frame}
+\begin{frame}{Калибровка эффективного Л-фактора}
+	\begin{itemize}[<+->]
+		\item $\nu_s$ --- инъективная функция $\gef$, значит $\W_y(\gef^1) = \W_y(\gef^2) \to \gef^1=\gef^2$
+		\item Пространство траекторий частиц в ускорителе поделено на классы эквивалентности $[\gef]$
+		\item[$\Rightarrow$] $\exists!\gef^0$: $[\gef^0] = [\W_y=0]$
+		\item[$\Rightarrow$] если CW, CCW пучки оба заморожены в гоирзонтальной плоскости, то их $\gef$ равны
+	\end{itemize}
+\end{frame}
+\begin{frame}{Симуляция}
+	\begin{tikzpicture}
+		\node (pic) {\includegraphics[width=\linewidth]{GFF/GFF_stune_range_Y}};
+		\pause
+		\node (expl) at (pic.center)[xshift=3.1cm, yshift=2.1cm] {
+			\begin{tcolorbox}[height=3.6cm,width=.5\linewidth]
+				\begin{minipage}{\linewidth}
+					\begin{itemize}
+						\item Не нужна смена $S_{sext}$ при обращении пучка
+						\item $\nu_s^{CW} \approx \nu_s^{CCW} \Rightarrow |\W_x^{CW}| \approx |\W_x^{CCW}|$
+					\end{itemize}
+				\end{minipage}
+			\end{tcolorbox}
+		};
+	\pause
+	\node (calib) at (expl.south)[yshift=-1.8cm] {\includegraphics[width=.52\linewidth]{GFF/GFF_omegas_range_Y}};
+	\end{tikzpicture}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
