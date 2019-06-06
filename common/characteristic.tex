@@ -11,7 +11,7 @@
 	\item взаимодействие вне теплового равновесия.
 \end{itemize}
 
-Если они существуют, перманентные ЭДМ частиц нарушают P- и T-симметрии, а значит, по теореме CPT --- и CP-симметрию. Стандартная Модель (СМ) элементарных частиц позволяет учесть CP-нарушение посредством матрицы Кабиббо-Кабаяши-Масакавы, однако значения ЭДМ, предсказываемые ей для, например, нейтрона, лежат в диапазоне от $10^{-33}$ до $10^{-30}~e\cdot$см.~\cite{Harris:Neutron2007} К примеру, теория SUSY (суперсимметрия) предсказывает наличие ЭДМ гораздо большей величины (на уровне $10^{-29} - 10^{-24}~e\cdot$см). Таким образом, ЭДМ элементарных частиц являются чувствительным индикатором физики за гранью СМ. 
+Если они существуют, перманентные ЭДМ частиц нарушают P- и T-симметрии, а значит, по теореме CPT --- их существование можно связать с нарушением CP-симметрии. Стандартная Модель (СМ) элементарных частиц позволяет учесть CP-нарушение посредством матрицы Кабиббо-Кабаяши-Масакавы, однако значения ЭДМ, предсказываемые ей для, например, нейтрона, лежат в диапазоне от $10^{-33}$ до $10^{-30}~e\cdot$см.~\cite{Harris:Neutron2007} К примеру, теория SUSY (суперсимметрия) предсказывает наличие ЭДМ гораздо большей величины (на уровне $10^{-29} - 10^{-24}~e\cdot$см). Таким образом, ЭДМ элементарных частиц являются чувствительным индикатором физики за гранью СМ. 
 
 Поиск ЭДМ частиц был начат более 50-ти лет назад. Первый эксперимент по измерению ЭДМ нейтрона был проведён др. Н.Ф. Рэмзи (dr. N.F. Ramsey) в конце 1950-х годов. По результатам эксперимента, верхняя граница ЭДМ нейтрона была ограничена величиной $5\cdot 10^{-20}~e\cdot$см.~\cite{Ramsey:Neutron1957} С тех пор было проведено множество более точных экспериментов, и на данный момент, верхняя граница на ЭДМ нейтрона находится на уровне $2.9\cdot 10^{-26}~e\cdot$см.~\cite{Baker:nEDM:Main, Baker:nEDM:Reply}
 
@@ -58,6 +58,8 @@
 \end{enumerate}
 
 {\influence}. Результаты исследования вошли в Yellow Report под названием ``Feasibility Study for an EDM Storage Ring,'' подготавливаемый для CERN коллаборацией CPEDM, в которую входит коллаборация JEDI.
+
+\input{Dissertation/TRIC_section}
 
 {\methods} Основными методами исследования являются математическое и компьютерное моделирование, и численный эксперимент.
 
@@ -108,15 +110,16 @@
         \printbibliography[heading=countauthornotvak, env=countauthornotvak, keyword=biblioauthornotvak, section=1]%
         \printbibliography[heading=countauthor, env=countauthor, keyword=biblioauthor, section=1]%
         \nocite{%Порядок перечисления в этом блоке определяет порядок вывода в списке публикаций автора
-%        		Senichev:PRL:FDM,%
                 Aksentev:IPAC17,% Scopus
-                Aksentev:LaPlas17,Aksentev:LaPlas18,Aksentev:LaPlas19,%
+                Aksentev:LaPlas17,Aksentev:LaPlas18,Aksentev:LaPlas19,% РИНЦ
                 Aksentev:IPAC19:GFF,Aksentev:IPAC19:SMP,Aksentev:IPAC19:DECOH,% Scopus
-                Aksentev:Stats% Scopus
+                TRIC,% VAK, Scopus, WoS
+                PAX,% Scopus, WoS
+                Aksentev:Stats% Scopus, WoS
         }%
-        \publications\ Основные результаты по теме диссертации изложены в~\arabic{citeauthor}~печатных изданиях, 
-        \arabic{citeauthornotvak} из которых в журнале, индексируемом в международной базе цитирования Scopus,
-        %\arabic{citeauthorvak} из которых изданы в журналах, рекомендованных ВАК, 
+        \publications\ Основные результаты по теме диссертации изложены в~\arabic{citeauthor}~печатных изданиях:
+        \arabic{citeauthornotvak} изданы в журналах, индексируемых в международных базах цитирования Scopus и Web of Science,
+        из которых \arabic{citeauthorvak} в журнале, рекомендованном ВАК, а
         \arabic{citeauthorconf} "--- в~тезисах докладов. Из последних, 4 работы входят в базу Scopus, 3 в РИНЦ.
     \end{refsection}
     \begin{refsection}[vak,papers,conf]%Блок, позволяющий отобрать из всех работ автора наиболее значимые, и только их вывести в автореферате, но считать в блоке выше общее число работ
@@ -124,8 +127,8 @@
         \printbibliography[heading=countauthornotvak, env=countauthornotvak, keyword=biblioauthornotvak, section=2]%
         \printbibliography[heading=countauthorconf, env=countauthorconf, keyword=biblioauthorconf, section=2]%
         \printbibliography[heading=countauthor, env=countauthor, keyword=biblioauthor, section=2]%
-%        \nocite{Senichev:PRL:FDM}%vak
-        \nocite{Aksentev:Stats}%notvak
+        \nocite{TRIC-VAK}%vak
+        \nocite{Aksentev:Stats, PAX}%notvak
         \nocite{Aksentev:LaPlas17,Aksentev:LaPlas18,Aksentev:LaPlas19,Aksentev:IPAC17,%
 	        	Aksentev:IPAC19:GFF,Aksentev:IPAC19:SMP,Aksentev:IPAC19:DECOH}%conf
     \end{refsection}
