@@ -141,11 +141,10 @@
 \end{frame}
 \begin{frame}
 \frametitle{План работ}
-\begin{enumerate}
+\begin{enumerate}[<+->]
   \item \textbf{Возмущения спиновой динамики}
   \begin{itemize}
-  	\item Постановка проблемы
-  	\item Результаты симуляции
+  	\item Ошибка спецификации регрессионной модели, связанная с бетатронными колебаниями
   \end{itemize}
   \item \textbf{Декогеренция спинов}
   \begin{itemize}
@@ -156,7 +155,7 @@
 \end{enumerate}
 \end{frame}
 \begin{frame}
-	\begin{enumerate}	\setcounter{enumi}{2}
+	\begin{enumerate}[<+->]	\setcounter{enumi}{2}
 		\item \textbf{Поля неидеальности ускорителя}
 		\begin{itemize}
 			\item Исследование зависимости от распределения неидеальностей вдоль кольца
@@ -164,20 +163,20 @@
 		\end{itemize}
 		\item \textbf{Смена полярности ведущего поля}
 		\begin{itemize}
-			\item Калибровка эффективного Лоренц-фактора
-			\item Результаты симуляции
+			\item Показать, что секступольное подавление декогеренции работает без изменений для обоих направлений движения пучка
+			\item И что частота прецессии спина референсной частицы одинакова в обоих случаях
 		\end{itemize}
 	\end{enumerate}
 \end{frame}
-\begin{frame} % Детальный разбор этого в презентацию добавлять не особенно хочется
-	\begin{enumerate}  \setcounter{enumi}{4}
+\begin{frame}
+	\begin{enumerate}[<+->]  \setcounter{enumi}{4}
 		\item \textbf{Спин-тюн эквивалентность частиц с одинаковыми эффективными Лоренц-факторами}
-		\begin{itemize}
+		\begin{itemize}[<.->]
 			\item Формулировка A
 			\item Формулировка B
 		\end{itemize}
 		\item \textbf{Структуры колец для поиска ЭДМ методом замороженного спина}
-		\begin{itemize}
+		\begin{itemize}[<.->]
 			\item BNL FS
 			\item QFS 6.3
 			\item QFS E+B
@@ -188,7 +187,7 @@
 %%%%%%%% MAIN CONTENT %%%%%%%
 \begin{frame}\frametitle{Возмущения спиновой динамики}
 	\framesubtitle{Постановка проблемы}
-	\begin{itemize}
+	\begin{itemize}[<+->]
 		\item Решение Т-БМТ уравнения для вертикальной компоненты спина
 		\[
 		s_y(n_{turn}) = \sqrt{\bkt{\nbar_y\nbar_z}^2 + \nbar_x^2}\cdot\sin\bkt{2\pi\nu_s\cdot\ntrn + \delta}.
@@ -200,8 +199,8 @@
 		\item При значительной вариации $\nu_s$, $\nbar$ --- ошибка спецификации уравнения регрессии
 	\end{itemize}
 \end{frame}
-\begin{frame}\frametitle{Симуляция}
-	\includegraphics[width=\linewidth]{chapter2/BNL_lattice}
+\begin{frame}\frametitle{Симуляция}\centering
+	\includegraphics[width=.8\linewidth]{chapter2/BNL_lattice}
 \end{frame}
 \begin{frame}\frametitle{Симуляция}
 	\begin{minipage}[t]{.48\linewidth}
@@ -251,13 +250,13 @@
 	\end{tikzpicture}	
 \end{frame}
 \begin{frame}\frametitle{Выводы}
-	\begin{enumerate}
+	\begin{enumerate}[<+->]
 		\item Влияние вариации $\nbar$ на дисперсию невязки между идеальными данными, и трекерными, незначительно, по сравнению с вариацией $\nu_s$
 		\item $\sigma[\epsilon_2] \ll \sigma[P_y]$, значит суперпозиция систематической ошибки со случайной ошибкой измерений поляризации не будет обладать статистически значимой систематичностью
 	\end{enumerate}
 \end{frame}
 \begin{frame}\frametitle{Выводы}
-	\begin{enumerate} \setcounter{enumi}{2}
+	\begin{enumerate}[<+->] \setcounter{enumi}{2}
 		\item $\sigma[\hat a, \hat b] < 10\%$, значит даже если вариация $\nbar$ будет достаточной, чтобы повлиять на $\hat a$, её эффект на $\hat b$ будет уменьшен как минимум в 10 раз
 		\item Этот систематический эффект контролируем. Увеличивая скорость вращения Спин-Колеса, мы непрерывно уменьшали амплитуду колебаний $\nbar$
 	\end{enumerate}
@@ -265,7 +264,17 @@
 
 \begin{frame}\frametitle{Декогеренция спинов}% Здесь надо добавить (более качественную) анимацию декогеренции
 	\centering
-	\animategraphics[autoplay,loop,height=.8\paperheight]{1}{images/spin_decoh/spin_decoh-}{0}{5}
+	%\animategraphics[autoplay,loop,height=.8\paperheight]{1}{images/spin_decoh/static_image-}{0}{5}
+	\begin{tikzpicture}
+		\node (k0) {\includegraphics[width=.7\linewidth,
+			trim=0 150 0 150, clip]{images/spin_decoh/static_image-0.pdf}};
+		\foreach \i in {1,...,5}
+		{
+			\pause
+			\node (k\i) at (k0.center) {\includegraphics[width=.7\linewidth,
+				trim=0 150 0 150, clip]{images/spin_decoh/static_image-\i.pdf}};
+		}
+	\end{tikzpicture}
 \end{frame}
 \begin{frame}{Декогеренция спинов}
 	\framesubtitle{Причины}
@@ -313,7 +322,7 @@
 
 \end{frame}
 \begin{frame}{Выводы}
-	\begin{enumerate}
+	\begin{enumerate}[<+->]
 		\item Сигнатура эффекта секступольных полей на коэффициент сжатия орбиты --- изменение функциональной зависимости $\avg{\nu_s}(\avg{\Delta K/K})$
 		\item \ldots~ на длины орбит частиц банча --- уменьшение дисперсии $\avg{\Delta K/K}$
 	\end{enumerate}
@@ -356,11 +365,11 @@
 	\begin{tikzpicture}
 		\node (lat) {\includegraphics[width=.8\linewidth]{chapter2/BNL_lattice}};
 		\pause
-		\node (tilt) at (lat.center)[xshift=2.5cm,yshift=-1.6cm] {\includegraphics[width=.77\linewidth,trim = 30 0 0 0, clip]{images/magnet_tilting}};
+		\node (tilt) at (lat.center)[xshift=2cm,yshift=-1.6cm] {\includegraphics[width=.77\linewidth,trim = 30 0 0 0, clip]{images/magnet_tilting}};
 		\pause
 		\node (sim) at (lat.center)[xshift=-2cm, yshift=2cm] {
-			\colorbox{white}{
-				\begin{minipage}{.5\linewidth}
+			\begin{tcolorbox}[width=.6\linewidth]
+				\begin{minipage}{\linewidth}
 					\begin{itemize}
 						\item 11 симуляций
 						\item наколнял только спин-ротаторы
@@ -370,7 +379,7 @@
 						\item вычислялась $\W_x^{CO}$
 					\end{itemize}
 				\end{minipage}
-			}
+			\end{tcolorbox}
 		};
 	\end{tikzpicture}
 \end{frame}
@@ -401,7 +410,7 @@
 		\begin{enumerate}
 			\item Линейность
 			\item Асимметричность, вероятно связанная с различием референсных орбит CW и CCW пучков
-			\item Асимметричность 
+			\item Асимметричность меньше при больших скоростях SW
 		\end{enumerate}
 	\end{block}
 \end{frame}
@@ -451,6 +460,89 @@
 		};
 	\pause
 	\node (calib) at (expl.south)[yshift=-1.8cm] {\includegraphics[width=.52\linewidth]{GFF/GFF_omegas_range_Y}};
+	\end{tikzpicture}
+\end{frame}
+\begin{frame}{Спин-тюн эквивалентность траекторий частиц}
+%	\framesubtitle{Проблема}
+	\begin{block}{Утверждение 1}
+		Частицы с одинаковым значением эффективного Лоренц-фактора имеют одинаковый спин-тюн, т.е. эквивалентны с точки зрения спиновой динамики.
+	\end{block}
+	\pause
+	\begin{block}{Это следствие уравнения}
+		 $\nu_s = G\gamma$
+	\end{block}
+\end{frame}
+\begin{frame}{Две формулировки утверждения 1}
+	\begin{block}{A}
+		$\gef \equiv \avg{\Delta K/K}$
+	\end{block}
+	\pause
+	\begin{block}{B}
+		$\nu_s(x,a,y,b,\ell,\delta) \equiv \nu_s(\gef)$
+	\end{block}
+\end{frame}
+\begin{frame}{A}
+%\hspace*{-.8cm}
+	\begin{tikzpicture}
+		\node (main) {\includegraphics[width=.9\linewidth]{stune_traj_equ/part1/stune_vs_equ_energy}};
+		\pause
+		\node (eq) at (main.north)[yshift=1cm, xshift=.5cm] {
+			\begin{tcolorbox}[width=.95\linewidth]
+				\begin{minipage}{\linewidth}
+				$\Delta\delta_{eq} = \frac{\gamma_0^2}{\gamma_0^2\alpha_0 - 1}\bkt*{\frac{\delta_m^2}{2}\bkt{\alpha_1 - \alpha_0\gamma^{-2} + \gamma_0^{-4}} + \bkt{\frac{\Delta L}{L}}_\beta}$
+				\end{minipage}
+			\end{tcolorbox}
+		};
+	\pause
+	\node (lps) at (main.center) {\includegraphics[width=.9\linewidth]{stune_traj_equ/part1/long_emitt_vs_trans_emitt}};
+	\pause
+	\node (emiQ) at (main.south)[xshift=3.2cm, yshift=.3cm]{
+		\begin{tcolorbox}[width=.53\linewidth]
+		\small{
+			$\bkt{\frac{\Delta L}{L}}_\beta = \frac{\pi}{2L}\bkt*{\epsilon_x\cdot Q_x + \epsilon_y\cdot Q_y}$
+		}
+		\end{tcolorbox}
+	};
+	\end{tikzpicture}
+\end{frame}
+\begin{frame}{B}
+\hspace*{-2cm}
+	\begin{tikzpicture}
+		\node (emiT) {\includegraphics[width=.9\linewidth]{stune_traj_equ/part2/3D_plot_all_ps_vars}};
+		\pause
+		\node (emiL) at (emiT.center) [xshift=3.4cm, yshift=-2.7cm] {\includegraphics[width=.9\linewidth,
+			trim=45 0 0 0, clip]{stune_traj_equ/part2/3D_plot_all_ps_vars_equal_long_emi}};
+	\end{tikzpicture}
+\end{frame}
+\begin{frame}{Выводы}
+	\begin{block}{Вывод 1}
+		\begin{itemize}[<+->]
+			\item Формулировка B верна
+			\item Эффективный Лоренц-фактор отражает величину продольного эмиттанса частицы
+		\end{itemize}
+	\end{block}
+\end{frame}
+\begin{frame}{Выводы}\centering
+	\includegraphics[width=.9\linewidth]{decoh_sim/mean_n_bar_vs_spin_tune}
+\end{frame}
+\begin{frame}{Выводы}
+	\begin{block}{Вывод 2}
+		Спиновая динамика частиц с одинаковым значением $\gef$ эквивалентна в общем смысле ($\nu_s$, $\nbar$)
+	\end{block}
+	\pause
+	\begin{alertblock}{Дисклеймер}
+		По крайней мере в случае накопительного кольца, работающего в состоянии нулевого спин-резонанса
+	\end{alertblock}
+\end{frame}
+\begin{frame}{QFS-структуры}
+	\begin{tikzpicture}
+		\node (spin) {\includegraphics[width=.9\linewidth]{chapter2/EB_QFS_Sx_vs_s_1turn}};
+		\pause
+		\node (E+B) at (spin.center)[xshift=-2cm, yshift=2cm]
+		{\includegraphics[width=.7\linewidth]{chapter2/E+B_lattice}};
+		\pause
+		\node (6_3) at (spin.center)[xshift=1.45cm,yshift=-.5cm]
+		{\includegraphics[width=.7\linewidth]{chapter2/6_3_lattice}};
 	\end{tikzpicture}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
