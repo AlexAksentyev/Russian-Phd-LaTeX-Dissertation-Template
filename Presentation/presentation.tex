@@ -77,504 +77,110 @@
 
 \maketitle
 
-\begin{frame}
-\frametitle{Цели и задачи}
-\begin{itemize}
-  \item \textbf{Предмет исследования:} Метод детектирования электрического дипольного момента дейтрона посредством измерения частоты прецессии спина
-  \item \textbf{Исследуемые характеристики:} 
-  \begin{itemize}
-  	\item устойчивость к систематическим ошибкам
-  	\item статистическая точность
-  \end{itemize}
-  \item \textbf{Цель исследования:} оценка возможности детектирования ЭДМ дейтрона с точностью $10^{-29}~e\cdot$см предложенным методом
-  \item \textbf{Актуальность:} исследование велось в рамках проекта, посвящённого поиску ЭДМ элементарных частиц
-\end{itemize}
-\end{frame}
-\begin{frame}\frametitle{Классификация методологий}
-\begin{forest}
-	[SR EDM
-	[Замороженный\\ спин, align=center
-	[Измерения\\ амплитуды, align=center
-	[BNL FS]
-	[D-MR]
-	]
-	[Измерения\\ частоты, align=center
-	[SW]
-	[FDM]
-	]
-	]
-	[Незамороженный\\ спин, align=center
-	[Частично-\\замороженный\\спин, align=center]
-	]
-	]
-\end{forest}
-\end{frame}
-\begin{frame}
-\frametitle{Проблемы}
-\begin{itemize}
-  \item Возмущения спиновой динамики
-  \item Декогеренция спинов частиц пучка
-  \item Неидеальности машины
-  \item Смена полярности ведущего поля ускорителя
-\end{itemize}
-\end{frame}
-\begin{frame}\frametitle{Общие проблемы измерения ЭДМ методом накопительного кольца}\framesubtitle{И их канонические решения}
-\begin{minipage}[t]{.5\linewidth}
-	\underline{\textbf{Спин-Колесо}} %2D-замороженный спин
+\section{Формальные вещи}
+
+\begin{frame}{Актуальность}
+	\framesubtitle{Зачем нужно искать ЭДМ?}
 	\begin{itemize}
-		\item Возмущения полей
-		\item Бетатронное движение
-		\item[*] Обе вызывают возмущение направления $\nbar$
+		\item Барионная асимметрия вселенной
+		\item Нарушение СР-симметрии, как одно из условий бариогенеза
+		\item Существование перманентного ЭДМ нарушает СР-симметрию
 	\end{itemize}
-\end{minipage}~%
-\begin{minipage}[t]{.5\linewidth}
-	\underline{\textbf{Частное решение}}
+\end{frame}
+\begin{frame}{Цель и задачи исследования}
+	\textbf{Цель:} Оценка возможности детектирования ЭДМ на уровне $10^{-29}$\ecm~предложенным методом\\
+	\textbf{Задачи:} 
 	\begin{itemize}
-		\item Спиновая декогеренция
-		%% \item Variation of the injection point (?)
-		\item[Р:] Секступольные поля
-		\item Неидеальности машины
-		\item[Р:] CW/CCW-инжекция
-	\end{itemize}
-\end{minipage}
-%% Of course, problems requiring the Spin Wheel solution automatically force us to the Frequency Domain.
-\end{frame}
-\begin{frame}
-\frametitle{План работ}
-\begin{enumerate}[<+->]
-  \item \textbf{Возмущения спиновой динамики}
-  \begin{itemize}
-  	\item Ошибка спецификации регрессионной модели, связанная с бетатронными колебаниями
-  \end{itemize}
-  \item \textbf{Декогеренция спинов}
-  \begin{itemize}
-    \item Симуляция подавления декогеренции в идеальном ускорителе
-    \item Симуляция подавления декогеренции в неидеальном ускорителе
-    \item Анализ механизма подавления декогеренции
-  \end{itemize}
-\end{enumerate}
-\end{frame}
-\begin{frame}
-	\begin{enumerate}[<+->]	\setcounter{enumi}{2}
-		\item \textbf{Неидеальности ускорителя}
-		\begin{itemize}
-			\item Исследование зависимости наклона оси прецессии спина от распределения неидеальностей вдоль кольца
-			\item Сравнение систематической ошибки измерений при движении пучка в кольце в прямом и обратном направлениях
-		\end{itemize}
-		\item \textbf{Смена полярности ведущего поля}
-		\begin{itemize}
-			\item Показать, что секступольное подавление декогеренции работает без изменений для обоих направлений движения пучка
-			\item И что частота прецессии спина референсной частицы одинакова в обоих случаях
-		\end{itemize}
-	\end{enumerate}
-\end{frame}
-\begin{frame}
-	\begin{enumerate}[<+->]  \setcounter{enumi}{4}
-		\item \textbf{Спин-тюн эквивалентность частиц с одинаковыми эффективными Лоренц-факторами}
-		\begin{itemize}[<.->]
-			\item Формулировка A
-			\item Формулировка B
-		\end{itemize}
-		\item \textbf{Структуры колец для поиска ЭДМ методом замороженного спина}
-		\begin{itemize}[<.->]
-			\item BNL FS
-			\item QFS 6.3
-			\item QFS E+B
-		\end{itemize}
-	\end{enumerate}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%% MAIN CONTENT %%%%%%%
-\begin{frame}\frametitle{Возмущения спиновой динамики}
-	\framesubtitle{Постановка проблемы}
-	\begin{itemize}[<+->]
-		\item Решение Т-БМТ уравнения для вертикальной компоненты спина
-		\[
-		s_y(n_{turn}) = \sqrt{\bkt{\nbar_y\nbar_z}^2 + \nbar_x^2}\cdot\sin\bkt{2\pi\nu_s\cdot\ntrn + \delta}.
-		\]
-		\item Данные фитируются функцией
-		\[
-		f(\ntrn) = a\cdot \sin(b\cdot \ntrn + c), ~(a,b,c)=\const
-		\]
-		\item При значительной вариации $\nu_s$, $\nbar$ --- ошибка спецификации уравнения регрессии
+		\item влияние бетатронных колебаний на валидность ЭДМ-статистики
+		\item спин-декогеренция вблизи нулевого резонанса
+		\item свойства МДМ-прецессии, связанной с неидеальностью машины (фэйк-сигнал)
+		\item её кабилровка и исключение из ЭДМ-статистики
+		\item оценка статистической точности
 	\end{itemize}
 \end{frame}
-\begin{frame}\frametitle{Симуляция}\centering
-	\includegraphics[width=.8\linewidth]{chapter2/BNL_lattice}
-\end{frame}
-\begin{frame}\frametitle{Симуляция}
-	\begin{minipage}[t]{.48\linewidth}
-		\textbf{Неидеальности\\ машины}
-		\includegraphics[width=1.2\linewidth, trim=80 10 0 0, clip]{images/magnet_tilting}
+
+\begin{frame}{Научная новизна}
+	\begin{enumerate}
+		\item Конкретно моего исследования: 
+			\begin{itemize}
+				\item исследовано влияние бетатронных колебаний
+				\item промоделирована процедура калибровки МДМ-прецессии
+			\end{itemize}
+		\item Вообще поиска ЭДМ (на COSY): 
 		\begin{itemize}
-			\item $\alpha\sim N(\mu_i, 3\cdot10^{-4})^\circ$
-			\item $\mu_i$ симулирует Спин-Колесо 
+			\item научились держать поляризацию продольно-поляризорванного пучка в течении 1,000 секунд
+			\item научились измерять (относительную) частоту прецессии спина (спин-тюн) с точностью $10^{-10}$
+			\item научились юстировать квадруполи при помощи самого пучка (Beam Based Alignment)
 		\end{itemize}
-	\end{minipage}~~~~
-	\begin{minipage}[t]{.45\linewidth}
-		\textbf{Частицы}
-		\begin{itemize}
-			\item бетатронные колебания в вертикальной плоскости
-			\item $E_{FS}\neq E_{kin}\to E_{FS}$
-			\item[$\Rightarrow$] $\nbar_x\ll 1 \Rightarrow$ повышенная чувствительность к возмущениям
-		\end{itemize}
-	\end{minipage}
-\end{frame}
-\begin{frame}\frametitle{Анализ}
-	\begin{minipage}[t]{.5\linewidth}
-		\textbf{Данные}
-		\begin{itemize}
-			\item[TRK] данные трекера TR COSY Infinity
-			\item[GEN] вычислены по формуле, $\nbar$, $\nu_s$ вычислены на данном обороте
-			\item[IDL] как в GEN, но $\nbar = \avg{\nbar}$, $\nu_s = \avg{\nu_s}$ 
-		\end{itemize}
-	\end{minipage}~~~~
-	\begin{minipage}[t]{.5\linewidth}
-		\textbf{Сравнительные\\ статистики}
-		\begin{itemize}
-			\item[$\epsilon_1(t)$] $= s_y^{gen}(t) - s_y^{idl}(t)$
-			\item[$\epsilon_2(t)$] $= s_y^{trk}(t) - s_y^{idl}(t)$
-		\end{itemize}
-%		\textbf{Что сделал}
-%		\begin{itemize}
-%			\item Оценил пригодность модели при фитировании данных $s_y^{trk}$, $s_y^{gen}$, $s_y^{idl}$
-%			\item Сравнил поведение стандартных отлклонений $\epsilon_1$, и $\epsilon_2$ относительно поведения $\sigma[\nbar]$
-%		\end{itemize}
-\end{minipage}
-\end{frame}
-\begin{frame}\frametitle{Результаты}
-	\begin{tikzpicture}
-		\node (resid) {\includegraphics[width=.7\linewidth]{smp_sim/residual_SD_vs_SW(both)}};
-		\pause
-		\node (nbar) at (resid.center)[xshift=2.5cm,yshift=-2cm]{\includegraphics[width=.7\linewidth]{smp_sim/NBAR_variation_sd_vs_SW}};
-	\end{tikzpicture}	
-\end{frame}
-\begin{frame}\frametitle{Выводы}
-	\begin{enumerate}[<+->]
-		\item Влияние вариации $\nbar$ на дисперсию невязки между идеальными данными, и трекерными, незначительно, по сравнению с вариацией $\nu_s$
-		\item $\sigma[\epsilon_2] \ll \sigma[P_y]$, значит суперпозиция систематической ошибки со случайной ошибкой измерений поляризации не будет обладать статистически значимой систематичностью
-	\end{enumerate}
-\end{frame}
-\begin{frame}\frametitle{Выводы}
-	\begin{enumerate}[<+->] \setcounter{enumi}{2}
-		\item $\sigma[\hat a, \hat b] < 10\%$, значит даже если вариация $\nbar$ будет достаточной, чтобы повлиять на $\hat a$, её эффект на $\hat b$ будет уменьшен как минимум в 10 раз
-		\item Этот систематический эффект контролируем. Увеличивая скорость вращения Спин-Колеса, мы непрерывно уменьшали амплитуду колебаний $\nbar$
 	\end{enumerate}
 \end{frame}
 
-\begin{frame}\frametitle{Декогеренция спинов}% Здесь надо добавить (более качественную) анимацию декогеренции
-	\centering
-	%\animategraphics[autoplay,loop,height=.8\paperheight]{1}{images/spin_decoh/static_image-}{0}{5}
-	\begin{tikzpicture}
-		\node (k0) {\includegraphics[width=.7\linewidth,
-			trim=0 150 0 150, clip]{images/spin_decoh/static_image-0.pdf}};
-		\foreach \i in {1,...,5}
-		{
-			\pause
-			\node (k\i) at (k0.center) {\includegraphics[width=.7\linewidth,
-				trim=0 150 0 150, clip]{images/spin_decoh/static_image-\i.pdf}};
-		}
-	\end{tikzpicture}
-\end{frame}
-\begin{frame}{Декогеренция спинов}
-	\framesubtitle{Причины}
-	\begin{minipage}{.65\linewidth}
-		\includegraphics[width=\linewidth]{chapter1/psp_diagram_betatron}
-	\end{minipage}%
-	\begin{minipage}{.4\linewidth}
-		\begin{itemize}
-			\item $\nu_s = \gamma G$
-			\item из-за разницы длин орбит, у частиц в пучке разная $\gamma_{eq}$ 
-		\end{itemize}
-	\end{minipage}
-\end{frame}
-\begin{frame}{Декогеренция спинов}
-	\framesubtitle{Подавление секступольными полями}
-	\begin{block}{Сдвиг равновесного уровня импульса}
-		$\Delta\delta_{eq} = \frac{\gamma_0^2}{\gamma_0^2\alpha_0 - 1}\bkt*{\frac{\delta_m^2}{2}\bkt{\alpha_1 - \alpha_0\gamma^{-2} + \gamma_0^{-4}} + \bkt{\frac{\Delta L}{L}}_\beta}$
-	\end{block}
-	\begin{block}{Эффекты секступольных полей}
-		\begin{forest}
-			forked edges,
-			for tree={edge={->},  rounded corners, grow'=0}
-			[{$S_{sext} = \frac{1}{B\rho} \pddx{B_y}[x][2]$}
-			[{$\Delta \alpha_{1,sext} = -\frac{S_{sext}D_0^3}{L}$}]
-			[{$\bkt{\frac{\Delta L}{L}}_{sext} = \mp \frac{S_{sext}D_0\beta_{x,y}\varepsilon_{x,y}}{L}$}]
-			]
-		\end{forest}
-	\end{block}
-\end{frame}
-\begin{frame}{Эффект секступольных полей}
-	\framesubtitle{Коэффициент сжатия орбиты}
-	\begin{tikzpicture}
-		\node (main) {\includegraphics[width=.7\linewidth]{decoh_sim/propdef/stune_vs_dkok_SS_D}};
-		\pause
-		\node (PS) at (main.east)[yshift=-2cm, xshift=-.8cm] {\includegraphics[width=.7\linewidth]{decoh_sim/propdef/long_phase_space_for_sext_settings_D}};
-	\end{tikzpicture}
-\end{frame}
-\begin{frame}{Эффект секступольных полей}
-	\framesubtitle{Длина орбиты}
-	\begin{tikzpicture}
-		\node (main) {\includegraphics[width=.7\linewidth]{decoh_sim/propdef/stune_vs_dkok_SS_Y}};
-		\pause
-		\node (PS) at (main.east)[yshift=-2cm, xshift=-.8cm] {\includegraphics[width=.7\linewidth]{decoh_sim/propdef/long_phase_space_for_sext_settings_Y}};
-	\end{tikzpicture}
-
-\end{frame}
-\begin{frame}{Выводы}
-	\begin{enumerate}[<+->]
-		\item Сигнатура эффекта секступольных полей на коэффициент сжатия орбиты --- изменение функциональной зависимости $\avg{\nu_s}(\avg{\Delta K/K})$
-		\item \ldots~ на длины орбит частиц банча --- уменьшение дисперсии $\avg{\Delta K/K}$
-	\end{enumerate}
-\end{frame}
-\begin{frame}{Подавление декогеренции в идеальной структуре}\centering
-	\begin{tikzpicture}
-		\node (X) {\includegraphics[height=.5\paperheight]{decoh_sim/spin_tune_decoh_x_offset}};
-		\pause
-		\node (Y) at (X.east)[yshift=-1.7cm]{\includegraphics[height=.5\paperheight]{decoh_sim/spin_tune_decoh_y_offset}};
-		\pause
-		\node (D) at (X.center)[yshift=-2.3cm]{\includegraphics[height=.5\paperheight]{decoh_sim/spin_tune_decoh_d_offset}};
-	\end{tikzpicture}
-\end{frame}
-\begin{frame}{Декогеренция в неидеальной структуре}
-	\begin{tikzpicture}
-		\node (imgX) {\includegraphics[width=.65\linewidth]{decoh_sim/SX_decoh_20sec_unopt}};
-		\pause
-		\node (imgY) at (imgX.south east)[yshift=1cm]{\includegraphics[width=.65\linewidth]{decoh_sim/SY_decoh_20sec_unopt}};
-	\end{tikzpicture}
-\end{frame}
-\begin{frame}{Включаем секступоли}
-\begin{tikzpicture}
-\node (imgX) {\includegraphics[width=.65\linewidth]{decoh_sim/SX_decoh_20sec_opt}};
-\pause
-\node (imgY) at (imgX.south east)[yshift=1cm]{\includegraphics[width=.65\linewidth]{decoh_sim/SY_decoh_20sec_opt}};
-\end{tikzpicture}
-\end{frame}
-\begin{frame}{МДМ фальш-сигнал}
-	\begin{block}{Величина}
-		$\SD{\W_x^{MDM}} = \frac{q}{m\gamma}\frac{G+1}{\gamma}\frac{\SD{B_x}}{\sqrt{n}}$
-	\end{block}
-	\begin{block}{Вопросы, требующие рассмотрения}
-		\begin{itemize}
-			\item Является ли ошибка линейной, т.е. $\W_x^{MDM} = f(\avg{\Theta_{tilt}})$?
-			\item Является ли ошибка симметричной, относительно обращения движения частицы, т.е. $|\W_x^{CW}| = |\W_x^{CCW}|$?
-		\end{itemize}
-	\end{block}
-\end{frame}
-\begin{frame}{Рассматриваемая структура}
-	\begin{tikzpicture}
-		\node (lat) {\includegraphics[width=.8\linewidth]{chapter2/BNL_lattice}};
-		\pause
-		\node (tilt) at (lat.center)[xshift=2cm,yshift=-1.6cm] {\includegraphics[width=.77\linewidth,trim = 30 0 0 0, clip]{images/magnet_tilting}};
-		\pause
-		\node (sim) at (lat.center)[xshift=-2cm, yshift=2cm] {
-			\begin{tcolorbox}[width=.6\linewidth]
-				\begin{minipage}{\linewidth}
-					\begin{itemize}
-						\item 11 симуляций
-						\item наколнял только спин-ротаторы
-						\item $\alpha\sim N(\mu_0\cdot(i-5), \sigma_0)$
-						\item $\mu_0 = 10\cdot\sigma_0 = 10^{-4}$ рад
-						\item ряды Тэйлора 3-го порядка
-						\item вычислялась $\W_x^{CO}$
-					\end{itemize}
-				\end{minipage}
-			\end{tcolorbox}
-		};
-	\end{tikzpicture}
-\end{frame}
-\begin{frame}{Линейность}\centering
-	\includegraphics[width=.8\linewidth]{fake_signal_sim/linearity_test_shifting_gauss_freq}
-\end{frame}
-\begin{frame}{Симметричность}
-\hspace*{-.9cm}
-	\begin{tikzpicture}
-		\node (first) {\includegraphics[width=.8\linewidth]{fake_signal_sim/linearity_test_shifting_gauss_rel_diff}};
-		\pause
-		\node (second) at (first.center)[xshift=2.5cm,yshift=-1.3cm] {\includegraphics[width=.8\linewidth]{fake_signal_sim/linearity_test_compensated+microrad_rel_diff}};
-	\end{tikzpicture}
-	
-\end{frame}
-\begin{frame}{Выводы}
-	\begin{block}{$\sigma_\theta = 10^{-4}$ рад, $n=100$ элементов}
-		\begin{tabular}{r|r}
-			\hline
-			$\w^{max}$ [рад/сек] & $P(\W_x^{MDM} < \w^{max})$\\
-			\hline
-			50  & 67\%\\
-			100 & 95\%\\
-			\hline
-		\end{tabular}
-	\end{block}
-	\begin{block}{Свойства}
-		\begin{enumerate}
-			\item Линейность
-			\item Асимметричность, вероятно связанная с различием референсных орбит CW и CCW пучков
-			\item Асимметричность меньше при больших скоростях SW
-		\end{enumerate}
-	\end{block}
-\end{frame}
-\begin{frame}{Смена полярности ведущего поля}
-	\framesubtitle{Зачем?}\centering
-	\begin{tikzpicture}
-		\node (null) {\includegraphics[height=.7\paperheight, trim=5 145 0 135, clip]{images/magnet_tilted-0.pdf}};
-		\foreach \i in {1,...,3}
-		{
-			\pause
-			\node (\i) at (null.center) {\includegraphics[height=.7\paperheight, trim=5 145 0 135, clip]{images/magnet_tilted-\i.pdf}};
-		}
-		\node (eq) at (null.south east)[yshift=.4cm] {$\hat\W_{edm} = \frac12\bkt{\W_x^{CW} + \W_x^{CCW}}$};
-	\end{tikzpicture}
-\end{frame}
-\begin{frame}{В чём проблема?}
-	\begin{itemize}[<+->]
-		\item $\W_x^{MDM} = \frac qmGB_x$
-		\item На самом деле, нужно восстановить $\W_x^{MDM}$, а не $B_x$
-		\item Востановление $B_x^{CW} = -B_x^{CCW}$ не достаточно, т.к. точка инжекции и $\nu_s$ меняются от цикла к циклу
-		\item К тому же, асимметрия структуры в отношении спин-динамики (см. выше)
-		\item[$\Rightarrow$] Нужно восстанавливать эффективный Лоренц-фактор пучка
+\begin{frame}{Практическая значимость}
+	По результатам моего исследования 
+	\begin{itemize}
+		\item сформулированы аргументы в пользу частотного подхода к поиску ЭДМ в накопительном кольце
+		\item исследованы систематические эффекты работы с поляризацией пучка в режиме нулевого спинового резонанса
+		\item проведена оценка статистической точности (и оптимальных параметров) предполагаемого эксперимента
 	\end{itemize}
 \end{frame}
-\begin{frame}{Калибровка эффективного Л-фактора}
-	\begin{itemize}[<+->]
-		\item $\nu_s$ --- инъективная функция $\gef$, значит $\W_y(\gef^1) = \W_y(\gef^2) \to \gef^1=\gef^2$
-		\item Пространство траекторий частиц в ускорителе поделено на классы эквивалентности $[\gef]$
-		\item[$\Rightarrow$] $\exists!\gef^0$: $[\gef^0] = [\W_y=0]$
-		\item[$\Rightarrow$] если CW, CCW пучки оба заморожены в гоирзонтальной плоскости, то их $\gef$ равны
-	\end{itemize}
-\end{frame}
-\begin{frame}{Симуляция}
-	\begin{tikzpicture}
-		\node (pic) {\includegraphics[width=\linewidth]{GFF/GFF_stune_range_Y}};
-		\pause
-		\node (expl) at (pic.center)[xshift=3.1cm, yshift=2.1cm] {
-			\begin{tcolorbox}[height=3.6cm,width=.5\linewidth]
-				\begin{minipage}{\linewidth}
-					\begin{itemize}
-						\item Не нужна смена $S_{sext}$ при обращении пучка
-						\item $\nu_s^{CW} \approx \nu_s^{CCW} \Rightarrow |\W_x^{CW}| \approx |\W_x^{CCW}|$
-					\end{itemize}
-				\end{minipage}
-			\end{tcolorbox}
-		};
-	\pause
-	\node (calib) at (expl.south)[yshift=-1.8cm] {\includegraphics[width=.52\linewidth]{GFF/GFF_omegas_range_Y}};
-	\end{tikzpicture}
-\end{frame}
-\begin{frame}{Спин-тюн эквивалентность траекторий частиц}
-%	\framesubtitle{Проблема}
-	\begin{block}{Утверждение 1}
-		Частицы с одинаковым значением эффективного Лоренц-фактора имеют одинаковый спин-тюн, т.е. эквивалентны с точки зрения спиновой динамики.
-	\end{block}
-	\pause
-	\begin{block}{Это следствие уравнения}
-		 $\nu_s = G\gamma$
-	\end{block}
-\end{frame}
-\begin{frame}{Две формулировки утверждения 1}
-	\begin{block}{A}
-		$\gef \equiv \avg{\Delta K/K}$
-	\end{block}
-	\pause
-	\begin{block}{B}
-		$\nu_s(x,a,y,b,\ell,\delta) \equiv \nu_s(\gef)$
-	\end{block}
-\end{frame}
-\begin{frame}{A}
-%\hspace*{-.8cm}
-	\begin{tikzpicture}
-		\node (main) {\includegraphics[width=.9\linewidth]{stune_traj_equ/part1/stune_vs_equ_energy}};
-		\pause
-		\node (eq) at (main.north)[yshift=1cm, xshift=.5cm] {
-			\begin{tcolorbox}[width=.95\linewidth]
-				\begin{minipage}{\linewidth}
-				$\Delta\delta_{eq} = \frac{\gamma_0^2}{\gamma_0^2\alpha_0 - 1}\bkt*{\frac{\delta_m^2}{2}\bkt{\alpha_1 - \alpha_0\gamma^{-2} + \gamma_0^{-4}} + \bkt{\frac{\Delta L}{L}}_\beta}$
-				\end{minipage}
-			\end{tcolorbox}
-		};
-	\pause
-	\node (lps) at (main.center) {\includegraphics[width=.9\linewidth]{stune_traj_equ/part1/long_emitt_vs_trans_emitt}};
-	\pause
-	\node (emiQ) at (main.south)[xshift=3.2cm, yshift=.3cm]{
-		\begin{tcolorbox}[width=.53\linewidth]
-		\small{
-			$\bkt{\frac{\Delta L}{L}}_\beta = \frac{\pi}{2L}\bkt*{\epsilon_x\cdot Q_x + \epsilon_y\cdot Q_y}$
-		}
-		\end{tcolorbox}
-	};
-	\end{tikzpicture}
-\end{frame}
-\begin{frame}{B}
-\hspace*{-2cm}
-	\begin{tikzpicture}
-		\node (emiT) {\includegraphics[width=.9\linewidth]{stune_traj_equ/part2/3D_plot_all_ps_vars}};
-		\pause
-		\node (emiL) at (emiT.center) [xshift=3.4cm, yshift=-2.7cm] {\includegraphics[width=.9\linewidth,
-			trim=45 0 0 0, clip]{stune_traj_equ/part2/3D_plot_all_ps_vars_equal_long_emi}};
-	\end{tikzpicture}
-\end{frame}
-\begin{frame}{Выводы}
-	\begin{block}{Вывод 1}
-		\begin{itemize}[<+->]
-			\item Формулировка B верна
-			\item Эффективный Лоренц-фактор отражает величину продольного эмиттанса частицы
-		\end{itemize}
-	\end{block}
-\end{frame}
-\begin{frame}{Выводы}\centering
-	\includegraphics[width=.9\linewidth]{decoh_sim/mean_n_bar_vs_spin_tune}
-\end{frame}
-\begin{frame}{Выводы}
-	\begin{block}{Вывод 2}
-		Спиновая динамика частиц с одинаковым значением $\gef$ эквивалентна в общем смысле ($\nu_s$, $\nbar$)
-	\end{block}
-	\pause
-	\begin{alertblock}{Дисклеймер}
-		По крайней мере в случае накопительного кольца, работающего в состоянии нулевого спин-резонанса
-	\end{alertblock}
-\end{frame}
-\begin{frame}{QFS-структуры}
-	\begin{tikzpicture}
-		\node (spin) {\includegraphics[width=.9\linewidth]{chapter2/EB_QFS_Sx_vs_s_1turn}};
-		\pause
-		\node (E+B) at (spin.center)[xshift=-2cm, yshift=2cm]
-		{\includegraphics[width=.7\linewidth]{chapter2/E+B_lattice}};
-		\pause
-		\node (6_3) at (spin.center)[xshift=1.45cm,yshift=-.5cm]
-		{\includegraphics[width=.7\linewidth]{chapter2/6_3_lattice}};
-	\end{tikzpicture}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Перспективы развития проекта}
-\begin{itemize}
-  \item Поляризованная программа на ускорительном комплексе НИКА, ОИЯИ, Дубна
-\end{itemize}
-\end{frame}
 
-\begin{frame}
-\frametitle{Результаты работы}
-\begin{itemize}
-  \item Изучены эффекты спиновой динамики, составляющие систематические ошибки эксперимента:
-  \begin{itemize}
-  	\item возмущения спиновой динамики, вызванные бетатронным движением
-  	\item декогеренция спинов
-  	\item МДМ прецессия, связанная с неидеальностью машины
-  \end{itemize}
-  \item Описаны средства борьбы с каждым из эффектов, проведено численное моделирование
-\end{itemize}
+\begin{frame}{Положения выносимые на защиту}
+	\begin{itemize}
+		\item ЭДМ-статистика частотного метода измерения не чувствительна к возмущениям со стороны бетатронного движения частиц
+		\item Возможно достичь времени жизни поляризации пучка на уровне 1,000 секунд
+		\item Свойства угловой скорости МДМ-прецессии 
+			\begin{itemize}
+				\item вынуждают использование частотных методов измерения ЭДМ
+				\item оставляют возможность исключения этой систематической ошибки из конечной статистики
+			\end{itemize}
+	\end{itemize}
 \end{frame}
 \begin{frame}
 	\begin{itemize}
-		  \item Сформулированы понятия:
-		\begin{itemize}
-			\item методов пространственной и частотной областей
-			\item двумерно-замороженного спина
-			\item необходимые условия успешного измерения ЭДМ в накопительном кольце
-			\item методология, удовлетворяющая этим условиям
-		\end{itemize}
-		\item Описаны структуры с замороженным и квази-замороженным спином
+		\item Зависимость частоты прецессии спина частицы может быть выражена как функция одной переменной, называемой эффективным Лорнец-фактором, и отражающей величину продольного эмиттанса частицы
+		\item Эффективный Лоренц-фактор поддаётся калибровке
+		\item Возможно достичь величины стандартной ошибки среднего значения ЭДМ-статистики на уровне $10^{-29}$\ecm~за год измерений
 	\end{itemize}
+\end{frame}
+
+\begin{frame}{Апробация}
+	\begin{itemize}
+		\item На COSY проводились исследования оптимизации времени когерентности спина при помощи секступольных полей
+		\item Результаты моего исследования пошли в поддготавливаемый коллаборацией JEDI для CERN отчёта, под названием ``Feasibility study for an EDM Storage Ring''
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[allowframebreaks]
+	\frametitle{Основные публикации по теме диссертации}
+	\begin{thebibliography}{9}
+		\bibitem{Stats-LaPlas}
+		A.E. Aksentev, Y.V. Senichev, ``Statistical precision in charged particle {EDM} search in storage rings.'' J. Phys.: Conf. Ser. \textbf{941} 012083 (2017)
+		\bibitem{Stats-IPAC}
+		A.E. Aksentyev, Y.V. Senichev,
+		``Model of Statistical Errors in the Search for the Deuteron EDM in the Storage Ring,''
+		in \emph{Proc. IPAC'17}, Copenhagen, Denmark, May 2017, pp. 2258--2260,
+		\url{https://doi.org/10.18429/JACoW-IPAC2017-TUPVA079}.
+		\bibitem{SOD-modeling-LaPlas}
+		A. Aksentev ``Modeling of spin-orbital dynamics in a storage ring.'' J. Phys.: Conf. Ser. \textbf{1238} 012079 (2019)		
+		\bibitem{SD-LaPlas}
+		A. E. Aksentyev, Y. V. Senichev, ``Spin Decoherence in a Frozen Spin Lattice, Its Suppression and Effect on the Frequency Domain Edm Statistic,''  в процессе публикации.
+		\bibitem{GFF-IPAC}
+		A.E. Aksentyev, Y.V. Senichev, ``Simulation of the Guide Field Flipping Procedure for the Frequency Domain Method,'' in \emph{Proc. IPAC'19}, Melbourne, Australia, May 2019, pp. 858--860, \url{doi:10.18429/JACoW-IPAC2019-MOPTS010}
+		\bibitem{SMP-IPAC}
+		A.E. Aksentyev, Y.V. Senichev, ``Spin Motion Perturbation Effect on the EDM Statistic in the Frequency Domain Method,'' in \emph{Proc. IPAC'19}, Melbourne, Australia, May 2019, pp. 861--863,
+		\url{doi:10.18429/JACoW-IPAC2019-MOPTS011}
+		\bibitem{SD-IPAC}
+		A.E. Aksentyev, Y.V. Senichev, ``Spin Decoherence in the Frozen Spin Storage Ring Method of Search for a Particle EDM,'' in \emph{Proc. IPAC'19}, Melbourne, Australia, May 2019, pp. 864--866,
+		\url{doi:10.18429/JACoW-IPAC2019-MOPTS012}
+	\end{thebibliography}
+\end{frame}
+
+\section{Интерес для ускорительщиков}
+
+\section{Мясо исследования}
+
+\begin{frame}{Результаты работы}
+	content...
 \end{frame}
 
 \begin{frame}
