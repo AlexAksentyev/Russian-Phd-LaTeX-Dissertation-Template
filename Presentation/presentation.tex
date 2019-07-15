@@ -150,30 +150,30 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}[allowframebreaks]
-	\frametitle{Основные публикации по теме диссертации}
-	\begin{thebibliography}{9}
-		\bibitem{Stats-LaPlas}
-		A.E. Aksentev, Y.V. Senichev, ``Statistical precision in charged particle {EDM} search in storage rings.'' J. Phys.: Conf. Ser. \textbf{941} 012083 (2017)
-		\bibitem{Stats-IPAC}
-		A.E. Aksentyev, Y.V. Senichev,
-		``Model of Statistical Errors in the Search for the Deuteron EDM in the Storage Ring,''
-		in \emph{Proc. IPAC'17}, Copenhagen, Denmark, May 2017, pp. 2258--2260,
-		\url{https://doi.org/10.18429/JACoW-IPAC2017-TUPVA079}.
-		\bibitem{SOD-modeling-LaPlas}
-		A. Aksentev ``Modeling of spin-orbital dynamics in a storage ring.'' J. Phys.: Conf. Ser. \textbf{1238} 012079 (2019)		
-		\bibitem{SD-LaPlas}
-		A. E. Aksentyev, Y. V. Senichev, ``Spin Decoherence in a Frozen Spin Lattice, Its Suppression and Effect on the Frequency Domain Edm Statistic,''  в процессе публикации.
-		\bibitem{GFF-IPAC}
-		A.E. Aksentyev, Y.V. Senichev, ``Simulation of the Guide Field Flipping Procedure for the Frequency Domain Method,'' in \emph{Proc. IPAC'19}, Melbourne, Australia, May 2019, pp. 858--860, \url{doi:10.18429/JACoW-IPAC2019-MOPTS010}
-		\bibitem{SMP-IPAC}
-		A.E. Aksentyev, Y.V. Senichev, ``Spin Motion Perturbation Effect on the EDM Statistic in the Frequency Domain Method,'' in \emph{Proc. IPAC'19}, Melbourne, Australia, May 2019, pp. 861--863,
-		\url{doi:10.18429/JACoW-IPAC2019-MOPTS011}
-		\bibitem{SD-IPAC}
-		A.E. Aksentyev, Y.V. Senichev, ``Spin Decoherence in the Frozen Spin Storage Ring Method of Search for a Particle EDM,'' in \emph{Proc. IPAC'19}, Melbourne, Australia, May 2019, pp. 864--866,
-		\url{doi:10.18429/JACoW-IPAC2019-MOPTS012}
-	\end{thebibliography}
-\end{frame}
+%\begin{frame}[allowframebreaks]
+%	\frametitle{Основные публикации по теме диссертации}
+%	\begin{thebibliography}{9}
+%		\bibitem{Stats-LaPlas}
+%		A.E. Aksentev, Y.V. Senichev, ``Statistical precision in charged particle {EDM} search in storage rings.'' J. Phys.: Conf. Ser. \textbf{941} 012083 (2017)
+%		\bibitem{Stats-IPAC}
+%		A.E. Aksentyev, Y.V. Senichev,
+%		``Model of Statistical Errors in the Search for the Deuteron EDM in the Storage Ring,''
+%		in \emph{Proc. IPAC'17}, Copenhagen, Denmark, May 2017, pp. 2258--2260,
+%		\url{https://doi.org/10.18429/JACoW-IPAC2017-TUPVA079}.
+%		\bibitem{SOD-modeling-LaPlas}
+%		A. Aksentev ``Modeling of spin-orbital dynamics in a storage ring.'' J. Phys.: Conf. Ser. \textbf{1238} 012079 (2019)		
+%		\bibitem{SD-LaPlas}
+%		A. E. Aksentyev, Y. V. Senichev, ``Spin Decoherence in a Frozen Spin Lattice, Its Suppression and Effect on the Frequency Domain Edm Statistic,''  в процессе публикации.
+%		\bibitem{GFF-IPAC}
+%		A.E. Aksentyev, Y.V. Senichev, ``Simulation of the Guide Field Flipping Procedure for the Frequency Domain Method,'' in \emph{Proc. IPAC'19}, Melbourne, Australia, May 2019, pp. 858--860, \url{doi:10.18429/JACoW-IPAC2019-MOPTS010}
+%		\bibitem{SMP-IPAC}
+%		A.E. Aksentyev, Y.V. Senichev, ``Spin Motion Perturbation Effect on the EDM Statistic in the Frequency Domain Method,'' in \emph{Proc. IPAC'19}, Melbourne, Australia, May 2019, pp. 861--863,
+%		\url{doi:10.18429/JACoW-IPAC2019-MOPTS011}
+%		\bibitem{SD-IPAC}
+%		A.E. Aksentyev, Y.V. Senichev, ``Spin Decoherence in the Frozen Spin Storage Ring Method of Search for a Particle EDM,'' in \emph{Proc. IPAC'19}, Melbourne, Australia, May 2019, pp. 864--866,
+%		\url{doi:10.18429/JACoW-IPAC2019-MOPTS012}
+%	\end{thebibliography}
+%\end{frame}
 
 \section{Интерес для ускорительщиков}
 \begin{frame}{Нововведение: искать ЭДМ в накопительном кольце}
@@ -206,15 +206,64 @@
 
 
 \section{Мясо исследования}
+\begin{frame}{Измерение амплитуды vs частоты}
+	\[
+	P_y = A\cdot \sin\Big[\underbrace{\sqrt{(\w_{edm} + \w_{imp})^2 + \w_y^2 + \w_z^2}}_{\W}\cdot t + \delta\Big]
+	\]
+	\begin{itemize}
+		\item \textbf{Амплитуда:} 
+		\begin{itemize}
+			\item Останавливаем МДМ-прецессию и в \textbf{горизонтальной}, и в \textbf{вертикальной} плоскости
+			\item Наблюдаем за изменением \textbf{пространственной ориентации} вектора поляризации пучка
+		\end{itemize}
+		\item \textbf{Частота:}
+		\begin{itemize}
+			\item Останавливаем МДМ-прецессию \textbf{только} в горизонтальной плоскости
+			\item Наблюдаем за изменением в \textbf{угловой скорости} прецессии поляризации в вертикальной плоскости
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Достоинства частотного метода}
+	\begin{itemize}
+		\item Менее жёсткие условия на точность установки элементов (не нужно исключать МДМ-вращение в вертикальной плоскости)
+		\item Устойчивое состояние \textbf{двумерно}-замороженного спина (решает проблему геометрической фазы)
+		\item Проще в отношении поляриметрии
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Эффект бетатронных колебаний}
+	content...
+\end{frame}
+
+\begin{frame}{Спин-декогеренция}
+	\framesubtitle{Теория}
+\end{frame}
+
+\begin{frame}{Спин-декогеренция}
+	\framesubtitle{Исследования на COSY}
+\end{frame}
+
+\begin{frame}{Эффект неидеальности ускорителя}
+	content...
+\end{frame}
+
+\begin{frame}{Эффективный Лоренц-фактор}
+	content...
+\end{frame}
+
+\begin{frame}{Калибровка МДМ-сигнала}
+контент
+\end{frame}
 
 \begin{frame}{Результаты работы}
 	content...
 \end{frame}
 
-\begin{frame}
-\begin{center}
-Спасибо за внимание!
-\end{center}
-\end{frame}
+%\begin{frame}
+%\begin{center}
+%Спасибо за внимание!
+%\end{center}
+%\end{frame}
 
 \end{document} 
