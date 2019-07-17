@@ -9,7 +9,9 @@
 
 \usepackage{../Dissertation/phdstyle}
 \usepackage[edges]{forest}
-\newcommand{\ntrn}{n_{turn}}
+%\newcommand{\W}{\Omega}
+\newcommand{\Wedm}{\W^{edm}}
+\newcommand{\Wmdm}{\W^{mdm}}
 \newcommand{\gef}{\gamma_{eff}}
 
 \usepackage{animate}
@@ -81,10 +83,12 @@
 
 \begin{frame}{Актуальность}
 	\framesubtitle{Зачем нужно искать ЭДМ?}
-	\begin{itemize}
-		\item Барионная асимметрия вселенной
-		\item Нарушение СР-симметрии, как одно из условий бариогенеза
+	\begin{itemize}[<+->]
+		\item Вопрос: Барионная асимметрия вселенной
+		\item Ответ: нарушение СР-симметрии, как одно из условий бариогенеза
 		\item Существование перманентного ЭДМ нарушает СР-симметрию
+		\item Стандартная Модель предсказывает ЭДМ $<10^{-31}~e\cdot cm$
+		\item[$\Rightarrow$] Обнаружение большего ЭДМ --- свидетельство физики за гранью СМ
 	\end{itemize}
 \end{frame}
 \begin{frame}{Цель и задачи исследования}
@@ -94,13 +98,13 @@
 		\item влияние бетатронных колебаний на валидность ЭДМ-статистики
 		\item спин-декогеренция вблизи нулевого резонанса
 		\item свойства МДМ-прецессии, связанной с неидеальностью машины (фэйк-сигнал)
-		\item её кабилровка и исключение из ЭДМ-статистики
+		\item её калибровка и исключение из ЭДМ-статистики
 		\item оценка статистической точности
 	\end{itemize}
 \end{frame}
 
 \begin{frame}{Научная новизна}
-	\begin{enumerate}
+	\begin{enumerate}[<+->]
 		\item Конкретно моего исследования: 
 			\begin{itemize}
 				\item исследовано влияние бетатронных колебаний
@@ -146,7 +150,7 @@
 \begin{frame}{Апробация}
 	\begin{itemize}
 		\item На COSY проводились исследования оптимизации времени когерентности спина при помощи секступольных полей
-		\item Результаты моего исследования пошли в поддготавливаемый коллаборацией JEDI для CERN отчёта, под названием ``Feasibility study for an EDM Storage Ring''
+		\item Результаты моего исследования пошли в подготавливаемый коллаборацией JEDI для CERN отчёта, под названием ``Feasibility study for an EDM Storage Ring''
 	\end{itemize}
 \end{frame}
 
@@ -176,12 +180,18 @@
 %\end{frame}
 
 \section{Интерес для ускорительщиков}
-\begin{frame}{Нововведение: искать ЭДМ в накопительном кольце}
-	content...
+\begin{frame}{Поиск ЭДМ в накопительном кольце}
+	\begin{block}{Томас-БМТ}
+		$\frac{\rd \vec s}{\rd t} = \vec s \times \bkt{\underbrace{a_0\cdot\vec B + a_1\cdot\vec E\times\vec\beta}_{\vec\Wmdm} + \underbrace{b_0\cdot\vec E + b_1\cdot\vec\beta\times\vec B}_{\vec\Wedm}}$
+	\end{block}
+	\begin{block}{Замороженный спин}
+		$\Wmdm_y = 0$
+	\end{block}
 \end{frame}
 
-\begin{frame}{Замороженный vs Частично-замороженный спин}
-	content...
+\begin{frame}{Выглядит это так}
+	\centering
+	\includegraphics[width=.7\linewidth]{FS_ring} % из Proton EDM proposal
 \end{frame}
 
 \begin{frame}{Варианты структур}
@@ -195,6 +205,8 @@
 	\centering
 	\begin{tikzpicture}
 		\node (SX) {\includegraphics[width=\linewidth]{chapter2/EB_QFS_Sx_vs_s_1turn}};
+		\pause
+		\node (form) at (SX.north east) [xshift=-2cm, yshift=.5cm] {$J_0(\Phi_s) \approx 1 - \frac{\Phi_s^2}{4}$};
 		\pause
 		\node (6_3) at (SX.center)[xshift=-2cm, yshift=2cm]
 		 {\includegraphics[width=.7\linewidth]{chapter2/6_3_lattice}};
@@ -233,7 +245,9 @@
 \end{frame}
 
 \begin{frame}{Эффект бетатронных колебаний}
-	content...
+	\begin{itemize}
+		\item бетатронные колебания 
+	\end{itemize}
 \end{frame}
 
 \begin{frame}{Спин-декогеренция}
