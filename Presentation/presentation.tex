@@ -272,25 +272,38 @@
 
 \begin{frame}{Спин-декогеренция}
 	\framesubtitle{Ведение}
-	
+	\centering
+	\begin{tikzpicture}
+	\node (k0) {\includegraphics[width=.7\linewidth,
+		trim=0 150 0 150, clip]{images/spin_decoh/static_image-0.pdf}};
+	\foreach \i in {1,...,5}
+	{
+		\pause
+		\node (k\i) at (k0.center) {\includegraphics[width=.7\linewidth,
+			trim=0 150 0 150, clip]{images/spin_decoh/static_image-\i.pdf}};
+	}
+	\end{tikzpicture}
 \end{frame}
 
 \begin{frame}{Спин-декогеренция}
 	\framesubtitle{Теория}
-	\begin{itemize}
-		\item $\$
-	\end{itemize}
+	\centering
+	\includegraphics[width=.8\linewidth]{chapter1/psp_diagram_betatron}
 \end{frame}
 
 \begin{frame}{Спин-декогеренция}
 	\framesubtitle{Исследования на COSY}
-\end{frame}
+	\centering
+	\begin{tikzpicture}
+		\node (COSY) {\includegraphics[width=.9\linewidth]{chapter4/COSY-sextupoles}};
+		\pause
+		\node (imgA) at (COSY.north east) [xshift=-3cm] {\includegraphics[width=.6\linewidth]{chapter4/SCT-April-2019/MXL_scan}};
+		\pause
+		\node (imgB) at (COSY.south west) [xshift=3cm, yshift=1cm] {\includegraphics[width=.6\linewidth]{chapter4/SCT-April-2019/MXG_scan}};
+	\end{tikzpicture}
+f\end{frame}
 
 \begin{frame}{Эффект неидеальности ускорителя}
-	content...
-\end{frame}
-
-\begin{frame}{Эффективный Лоренц-фактор}
 	content...
 \end{frame}
 
@@ -299,7 +312,11 @@
 \end{frame}
 
 \begin{frame}{Результаты работы}
-	content...
+	\begin{enumerate}
+		\item Изучены эффекты спиновой динамики вблизи нулевого спинового резонанса
+		\item Описаны и численно промоделированы средства борьбы с этими эффектами
+		\item Сформулирован аргумент в пользу частотного метода измерений ЭДМ в накопительном кольце с замороженным спином
+	\end{enumerate}
 \end{frame}
 
 %\begin{frame}
