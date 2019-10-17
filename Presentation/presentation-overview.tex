@@ -278,6 +278,7 @@
 \section{Результаты моделирования}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Эффект бетатронных колебаний}
+\framesubtitle{Почему это важно?}
 \begin{block}{ЭДМ-статистика}
 	$\hat\w_{edm} = \frac12(\hat\w_x^+ + \hat\w_x^-)$, где $\w_x^\pm = \w_{edm} \pm \w_{mdm}$
 \end{block}
@@ -307,36 +308,26 @@
 \end{enumerate}
 \end{frame}
 
-
-
-%\begin{frame}{Эффект неидеальности ускорителя}
-%\centering
-%\begin{tikzpicture}
-%\node (null) {\includegraphics[height=.7\paperheight, trim=5 145 0 135, clip]{images/magnet_tilted-0.pdf}};
-%\foreach \i in {1,...,3}
-%{
-%	\pause
-%	\node (\i) at (null.center) {\includegraphics[height=.7\paperheight, trim=5 145 0 135, clip]{images/magnet_tilted-\i.pdf}};
-%}
-%\node (eq) at (null.south east)[yshift=.4cm] {$\hat\W_{edm} = \frac12\bkt{\W_x^{CW} + \W_x^{CCW}}$};
-%\end{tikzpicture}
-%\end{frame}
-
-%\begin{frame}{Калибровка МДМ-сигнала}
-%\begin{enumerate}[<+->]
-%\item Подавляем спин-прецессию в вертикальной плоскости с помощью специального спин-ротатора (Вин-фильтра)
-%\item Подстраиваем ведущее поле так, чтобы получить замороженный спин для данного пучка
-%\item Выключаем спин-ротатор; мы восстановили $\Wmdm_x$
-%\end{enumerate}
-%\end{frame}
+\begin{frame}{Калибровка МДМ-сигнала}
+\framesubtitle{Почему это важно?}
+\begin{block}{ЭДМ-статистика}
+	\begin{align*}
+		\hat\w_{edm} &= \frac12(\hat\w_x^+ + \hat\w_x^-) \\
+		&= \w_{edm} + \underbrace{\frac{1}{\sqrt2}\sigma_{\hat\w}}_{stat} + \underbrace{(\w_{mdm}^+ - \w_{mdm}^-)}_{syst}
+	\end{align*}
+\end{block}
+\begin{block}{Утверждение}
+	$\left[\w_y^{mdm+} - \w_y^{mdm-} \to 0\right] \Rightarrow \left[\w_x^{mdm+} - \w_x^{mdm-} \to 0\right]$
+\end{block}
+\end{frame}
 
 \begin{frame}{Калибровка МДМ-сигнала}
 \framesubtitle{Результаты симуляции}
 \centering
 \begin{tikzpicture}
-\node (A) {\includegraphics[width=\linewidth]{GFF/GFF_stune_range_Y}};
-\pause
-\node (B) at (A.center) {\includegraphics[width=\linewidth]{GFF/GFF_omegas_range_Y}};
+%\node (A) {\includegraphics[width=\linewidth]{GFF/GFF_stune_range_Y}};
+%\pause
+\node (B)  {\includegraphics[width=\linewidth]{GFF/GFF_omegas_range_Y}};
 \end{tikzpicture}
 \end{frame}
 
