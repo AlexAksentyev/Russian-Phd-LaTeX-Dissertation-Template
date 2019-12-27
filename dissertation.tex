@@ -26,6 +26,9 @@
     \input{biblio/biblatex}     % Реализация пакетом biblatex через движок biber
 }
 
+\usepackage{float}
+\usepackage{wrapfig}
+
 %%% Управление компиляцией отдельных частей диссертации %%%
 % Необходимо сначала иметь полностью скомпилированный документ, чтобы все
 % промежуточные файлы были в наличии
@@ -47,6 +50,7 @@
 \include{Dissertation/introduction}    % Введение
 \include{Dissertation/part1}           % Глава 1
 \include{Dissertation/part3}           % Глава 3
+\include{Dissertation/Appendix/statistics}
 \include{Dissertation/part4}		   % Глава 4
 \include{Dissertation/conclusion}      % Заключение
 %%%%%\include{Dissertation/acronyms}        % Список сокращений и условных обозначений
@@ -61,6 +65,6 @@
 \renewcommand*{\afterchapternum}{\par\nobreak\vskip \midchapskip}
 \renewcommand\thechapter{\Asbuk{chapter}} % Чтобы приложения русскими буквами нумеровались
    
-\include{Dissertation/Appendix/statistics} % Приложение
+%\include{Dissertation/Appendix/statistics} % Приложение
 
 \end{document}
