@@ -139,7 +139,7 @@ vcov = \begin{pmatrix}
 \var{\hat{\w}} = \nu\frac{\sum\bkt{\mupp}^2}{\sum\bkt{t_i\mupp}^2\sum\bkt{\mupp}^2 - \bkt{\sum t_i\bkt{\mupp}^2}^2}.
 \end{equation}
 
-\subsubsection{Проверка} Положим $\mu(t_i) = \phi + \w t_i$. В этом случае $\mupp = 1$, $\mu'_\w(t_i) = t_i = t_i\cdot\mupp$, и определитель матрицы Фишера упрощается:
+\paragraph{Проверка} Положим $\mu(t_i) = \phi + \w t_i$. В этом случае $\mupp = 1$, $\mu'_\w(t_i) = t_i = t_i\cdot\mupp$, и определитель матрицы Фишера упрощается:
 \begin{align*}
 |\Fisher| &= \frac{K}{2\nu^4}\bkt{K\sum_i t_i^2 - \bkt{\sum t_i}^2} \\
 &= \frac{K^3}{2\nu^4}\bkt{\frac1K\sum t_i^2 - \avg{t}^2} \\
