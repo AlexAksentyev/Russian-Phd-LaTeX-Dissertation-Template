@@ -193,7 +193,7 @@ vcov = \begin{pmatrix}
 %%   \end{pmatrix}.
 %% \end{align*}
 
-\subsection{Модуляция выборки}
+\subsection{Частотная модуляция выборки}
 Запишем матрицу Фишера в виде суммы
 \begin{equation}\label{eq:FisherSum}
 \Fisher = \sum_i \Fisher[i]; 
@@ -209,14 +209,15 @@ $\Fisher[i] = -\XpctO{\frac{\partial^2}{\partial\pars^2}\log f(y_i|\pars)\vert_{
 	\centering
 	\subbottom[Информация Фишера точки зависит параболически от производной сигнала.]{%
 		\begin{tikzpicture}
-		\draw[->] (-1.5,0) -- (1.5,0) node[right] {$\mupp$};
-		\draw[->] (0,-.5) -- (0, 2.3) node[above] {$I_i(\pars_0)$};
-		\draw[scale=1,domain=-1.5:1.5,smooth,variable=\x,red] plot ({\x},{\x*\x});
+		\begin{axis}[width=.6\textwidth, axis lines=center, xlabel=$\mupp$, ylabel=$I_i(\pars_0)$,
+		domain=-2:2]
+		\addplot[domain=-1.5:1.5, red] {x*x};
+		\end{axis}
 		\end{tikzpicture}
 	}
 	\subbottom[Точки в заштрихованных областях более информативны.]{%
 		\begin{tikzpicture}
-		\begin{axis}[axis lines=center, xlabel=$t$, domain=-.5:2*pi, legend pos=outer north east]
+		\begin{axis}[axis lines=center, xlabel=$t$, domain=-.5:2*pi, legend pos=outer north east, width=.6\textwidth]
 		\addplot[color=blue, name path=signal, domain=-.1:2*pi,samples=50] {sin(deg(x))}; \addlegendentry{сигнал}
 		\addplot[color=red, samples=50] {cos(deg(x))^2}; \addlegendentry{$\bkt{\mupp}^2$}
 		\addplot[mark=none,dashed, domain=0:2*pi]{.5};
@@ -231,15 +232,16 @@ $\Fisher[i] = -\XpctO{\frac{\partial^2}{\partial\pars^2}\log f(y_i|\pars)\vert_{
 		\end{axis}     
 		\end{tikzpicture}
 	}
-	\caption{Зависимость информации Фишера измерения синусоидального сигнала от его производной.}
+	\caption{Зависимость информации Фишера измерения синусоидального сигнала 
+		от его производной и от времени\label{fig:Fisher-info}}
 \end{figure}
 
-Если дать каждой точке вес, пропорциональный её информации Фишера, т.е. $w_i = \cos^2(\w t_i + \phi)$, вес области с $\bkt{\mupp}^2 \geq\sfrac12$ больше чем у эквивалентной области с $\bkt{\mupp}^2 < \sfrac12$ на множитель
+Рассмотрим Рисунок~\ref{fig:Fisher-info}. Если дать каждой точке вес, пропорциональный её информации Фишера, т.е. $w_i = \cos^2(\w t_i + \phi)$, вес области с $\bkt{\mupp}^2 \geq\sfrac12$ больше чем у эквивалентной области с $\bkt{\mupp}^2 < \sfrac12$ на множитель
 \begin{align*}
 \int_{t_0}^{t_1}\cos^2(\w t + \phi)\rd t = \frac1\w\int_{\w t_0+\phi}^{\w t_1+\phi} \cos^2\theta\rd\theta = \frac{\Delta t}{2} + \frac{1}{2\w}\sin\w\Delta t\cos\w\Sigma t \approx 1.9.
 \end{align*}
 
-То есть, если бы все точки находились в заштрихованной области, выборка была бы информативнее примерно в два раза.~\footnote{Это не учитывая что в случае поляриметрии неопределённость измерений обратно пропорциональна информативности, как было уже сказано во введении к этому приложению.}
+То есть, если бы все точки находились в заштрихованной области, выборка была бы информативнее примерно в два раза.~\footnote{Это не учитывая что в случае поляриметрии неопределённость измерений обратно пропорциональна информативности, как было уже сказано во введении к этой главе.}
 
 \section{Модель частоты событий на поляриметре}\label{Apx:Stats:Detector_counting_rate}
 В наших рассуждениях мы предположили следующую простую модель
@@ -257,23 +259,24 @@ I(t)= I_0\cdot e^{t/\LTb} = \nu N_0^b\cdot e^{t/\LTb},
 где $\LTb$ --- время жизни пучка, $N_0^b$ его начальное число частиц,
 и $\nu$ частота оборота пучка в ускорителе. Обозначая вероятность того, 
 что рассеянная частица полетит в сторону детектора $p$, ожидаемое число
-частиц, детектируемых в течении времени измерения $\dtc$ может быть
+частиц, детектируемых в течении времени измерения $\dtm$ может быть
 записано как
 \begin{align}
-N_0(t) & = p\cdot\int_{-\dtc/2}^{+\dtc/2} I(t+\tau)\rd\tau \notag                    \\
-& = p\cdot\frac{\nu N_0^b}{\lamb} e^{\lamb t}\cdot \bkt{e^{\lamb\sfrac{\dtc}{2}} - e^{-\lamb\sfrac{\dtc}{2}}} \notag \\
-& \approx \underbrace{p\cdot\nu N_0^b e^{\lamb t}}_{\text{rate}~r(t)} \cdot\dtc.
+N_0(t) & = p\cdot\int_{-\dtm/2}^{+\dtm/2} I(t+\tau)\rd\tau \notag                    \\
+& = p\cdot\frac{\nu N_0^b}{\lamb} e^{\lamb t}\cdot \bkt{e^{\lamb\sfrac{\dtm}{2}} - e^{-\lamb\sfrac{\dtm}{2}}} \notag \\
+& \approx \underbrace{p\cdot\nu N_0^b e^{\lamb t}}_{\text{rate}~r(t)} \cdot\dtm.
 \end{align}
-Таким образом, получаем распределение Пуассона
+Таким образом, получаем распределение Пуассона 
+реально долетевшего до детектора количества частиц $\tilde{N}_0$
 \[
-P_{N_0(t)}(\tilde{N}_0) = \frac{\bkt{r(t)\dtc}^{\tilde{N}_0}}{\tilde{N}_0!}\cdot e^{-r(t)\dtc},
+P_{N_0(t)}(\tilde{N}_0) = \frac{\bkt{r(t)\dtm}^{\tilde{N}_0}}{\tilde{N}_0!}\cdot e^{-r(t)\dtm},
 \]
 с дисперсией $\SD{\tilde{N}_0}^2(t) = N_0(t)$. %In the limit of large $N_0(t)$, one can use the Gaussian approximation.
 
-Нас интересует ожидаине $N_0(t) = \Xpct{\tilde{N}_0(t)}$, и его
-стандартное отклонение $\SD{N_0}(t)$. Обозначая время измерения одного
-события $\dtm$, полное время измерений $\dtc$, и число событий за
-измерение $\Ncm = \dtm/\dtc$, ожидание
+Нас интересует ожидание ${N_0(t) = \Xpct{\tilde{N}_0(t)}}$, и его
+стандартное отклонение $\SD{N_0}(t)$. Обозначая время детектирования одного
+события $\dtc$, полное время измерения поляризации $\dtm$, а число событий, составляющих
+одно измерение $\Ncm = \dtm/\dtc$, получим для ожидания
 \begin{equation*}
 \Xpct{\tilde{N}_0(t)}_{\dtm} = \frac{1}{\Ncm}\sum_{i=1}^\Ncm \tilde{N}_0(t_i).
 \end{equation*}
@@ -324,27 +327,55 @@ P_{N_0(t)}(\tilde{N}_0) = \frac{\bkt{r(t)\dtc}^{\tilde{N}_0}}{\tilde{N}_0!}\cdot
 ожиданием и дисперсией $\SD{\meas}^2$. Эстиматор максимального
 правдоподобия дисперсии оценки частоты колебаний асимметрии сечения
 взаимодействия $\Asym$ может быть выражен как
-\begin{align}
-\var{\hat\w} &= \frac{\SD{\meas}^2}{X_{tot}\cdot \var[w]{t}}, \label{eq:VarW}
-\shortintertext{где}
-X_{tot} &= \sum_{j=1}^{\Nm} x_j = \sum_{s=1}^{\Nnd}\sum_{j=1}^{\Nmnd} x_{js}, \notag\\
-\var[w]{t} &= \sum_i w_i \bkt{t_i - \avg{t}[w]}^2,~ \avg{t}[w] = \sum_i w_i t_i, \notag\\
-w_i &= \frac{x_i}{\sum_j x_j},~ x_i = (\Asym(0)\exp(\lamd t_i))^2\cos^2(\w t_i + \phi) = \bkt{\mupp}^2. \notag
-\end{align}
+\begin{equation}\label{eq:VarW}
+	\var{\hat\w} = \frac{\SD{\meas}^2}{X_{tot}\cdot \var[w]{t}}.
+\end{equation}
+В выражении выше
+\begin{align*}
+X_{tot} = \sum_{i=1}^{\Nm} x_i &= \sum_{s=1}^{\Nnd}\sum_{j=1}^{\Nmnd} x_{js},\\
+x_i &= (\Asym(0)\exp(\lamd t_i))^2\cos^2(\w t_i + \phi) = \bkt{\mupp}^2,
+\end{align*}
+есть полная информация Фишера выборки. Поскольку измеряемый сигнал периодический, мы представили 
+выборку как множество из  $\Nnd$ (zero crossing) окрестностей узлов сигнала; каждая окрестность состоит
+из $\Nmnd$ измерений (см. Рисунок~\ref{fig:modulated_sampling}). 
+Если, в результате равномерной выборки, частота и фаза колебаний уже известны до приемлемого уровня, 
+можно попытаться ещё улучшить эффективность измерений, применяя схему выборки 
+в которой измерения происходят только моменты быстрого изменения сигнала (модулированная выборка).
 
-В выражении выше, $X_{tot}$ есть полная информация Фишера выборки, и
-$\var[w]{t}$ --- мера длительности его измерения. Сумма по $s$ Можно наблюдать, что
-выбирая подходящие моменты времени для измерения, можно увеличить
-фактор $X_{tot}$, поскольку он пропорционален сумме производных сигнала по времени. 
-Если частота и фаза колебаний уже известны до
-приемлемого уровня, можно попытаться ещё улучшить эффективность измерений,
-применяя схему выборки в которой измерения происходят только моменты быстрого
-изменения сигнала (модулированная выборка).
+В свою очередь
+\begin{align*}
+	\var[w]{t} &= \sum_i w_i \bkt{t_i - \avg{t}[w]}^2,\\
+	 \avg{t}[w] &= \sum_i w_i t_i, ~w_i = \frac{x_i}{\sum_j x_j},
+\end{align*}
+есть мера длительности измерительного цикла, практически не зависисящая от выбора точек измерения.
+
+\begin{figure}[H]\centering
+	\begin{tikzpicture}
+	\begin{axis}[axis lines=center, xlabel=$t$, domain=-.5:2*pi, legend pos=outer north east, width=.7\textwidth,
+		scatter/use mapped color={draw=black, fill=black}
+	]
+	\addplot[color=blue, name path=signal, domain=-.1:2*pi,samples=50] {sin(deg(x))};
+	\draw[dashed] (axis cs:.785,0) -- (axis cs:.785,{sin(deg(.785))});
+	\draw[dashed] (axis cs:2.36,0) -- (axis cs:2.36,{sin(deg(2.36))});
+	\draw[dashed] (axis cs:3.93,0) -- (axis cs:3.93,{sin(deg(3.93))});
+	\draw[dashed] (axis cs:5.5,0) -- (axis cs:5.5,{sin(deg(5.5))});
+	\path[name path=axis] (axis cs:0,0) -- (axis cs:2*pi,0);
+	\addplot[fill=blue, opacity=.05] fill between [of=signal and axis, soft clip={domain=0:.785}];
+	\addplot[fill=blue, opacity=.05] fill between [of=signal and axis, soft clip={domain=2.36:3.93}];
+	\addplot[fill=blue, opacity=.05] fill between [of=signal and axis, soft clip={domain=5.5:2*pi}];
+	\addplot [scatter, only marks, domain=-.1:.7, samples=5] {sin(deg(x))};
+	\addplot [scatter, only marks, domain=2.4:3.9, samples=10, mark=*] {sin(deg(x))};
+	\addplot [scatter, only marks, domain=5.6:6.2, samples=5, mark=*] {sin(deg(x))};
+	\end{axis}     
+	\end{tikzpicture}
+	\caption{Частотно-модулированная выборка: измерения делаются только в максимально информативных точках,
+		находящихся в окрестностях узлов сигнала. В представленном случае, 
+		${\Nnd=3}$, ${\Nmnd=10}$\label{fig:modulated_sampling}}
+\end{figure}
 
 Оба фактора $\var[w]{t}$ и $X_{tot}$ ограничены конечным временем
-жизни поляризации. Поскольку мы измеряем колебательный сигнал, можно выразить 
-${\sum_{j=1}^{\Nmnd} x_{js} = \Nmnd\cdot x_{0s}}$, для некоторого среднего значения $x_{0s}$ 
-в данном узле $s$ колебаний, где $\Nmnd$ -- количество измерений асимметрии в окрестности узле. 
+жизни поляризации. Выразим ${\sum_{j=1}^{\Nmnd} x_{js} = \Nmnd\cdot x_{0s}}$, 
+для некоторого среднего значения $x_{0s}$  в данном узле $s$ колебаний. 
 Будем называть \emph{временем сжатия}\footnote{Поскольку, не изменяя количества измерений 
 	за единицу времени, они все ``сжимаются'' вокруг узла сигнала.} (обозначение $\dtnd$) 
 период времени вокруг узла сигнала, в течении которого производятся измерения. 
@@ -360,9 +391,9 @@ x_{01}  & = \frac{1}{\dtnd}\int_{-\dtnd/2}^{+\dtnd/2}\cos^2(\w\cdot t)\rd t = \f
 
 Уравнение~\eqref{eq:FItot} может быть использовано чтобы оценить
 пределы длительности эксперимента. В Таблице~\ref{tbl:FItot} мы
-собрали: процент от предела информации
-Фишера сэмпла, время (как фактор времени жизни поляризации) исчерпания этого
-процента информации из сэмпла, и соответствующее этому времени
+собрали: процент от \emph{предела} информации
+Фишера выборки, время (как фактор времени жизни поляризации) исчерпания этого
+процента информации из выборки, и соответствующее этому времени
 отношение сигнал-шум. Отношение сигнал-шум вычислено по формуле:
 \begin{equation}\label{eq:TauRatioSNR}
 \SNR = \frac{\Asym(0)\cdot e^{-\sfrac{t}{\LTd}}}{\SD{\Asym}(t)} 
