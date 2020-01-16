@@ -207,7 +207,7 @@ vcov = \begin{pmatrix}
 $\Fisher[i] = -\XpctO{\frac{\partial^2}{\partial\pars^2}\log f(y_i|\pars)\vert_{\pars=\pars_0}}$ будем интерпретировать как информацию о параметре, заложенную в измерение $y_i$.
 \begin{figure}[h]
 	\centering
-	\subbottom[Информация Фишера точки зависит параболически от производной сигнала.]{%
+	\subbottom[Информация Фишера точки зависит параболически от производной сигнала]{%
 		\begin{tikzpicture}
 		\begin{axis}[width=.6\textwidth, axis lines=center, xlabel=$\mupp$, ylabel=$I_i(\pars_0)$,
 		domain=-2:2]
@@ -215,7 +215,7 @@ $\Fisher[i] = -\XpctO{\frac{\partial^2}{\partial\pars^2}\log f(y_i|\pars)\vert_{
 		\end{axis}
 		\end{tikzpicture}
 	}
-	\subbottom[Точки в заштрихованных областях более информативны.]{%
+	\subbottom[Точки в заштрихованных областях более информативны]{%
 		\begin{tikzpicture}
 		\begin{axis}[axis lines=center, xlabel=$t$, domain=-.5:2*pi, legend pos=outer north east, width=.6\textwidth]
 		\addplot[color=blue, name path=signal, domain=-.1:2*pi,samples=50] {sin(deg(x))}; \addlegendentry{сигнал}
@@ -404,7 +404,7 @@ x_{01}  & = \frac{1}{\dtnd}\int_{-\dtnd/2}^{+\dtnd/2}\cos^2(\w\cdot t)\rd t = \f
 \begin{table}[h]
 	\centering
 	\caption{Выбранная информация Фишера, длительность измерений,
-		соответствующее отношение сигнал-шум.\label{tbl:FItot}}
+		соответствующее отношение сигнал-шум\label{tbl:FItot}}
 	\begin{tabular}{rrr}
 		\toprule
 		Предел ИФ(\%) & длительность ($\times\LTd$) &  SNR \\ \midrule
@@ -484,14 +484,14 @@ $N_0(t)$ с точностью примерно 3\% требует прибли�
 	\centering
 	\includegraphics[width=.8\linewidth]{images/App_Stats/LR_detector_relErr}
 	\caption{Относительная ошибка измерения частоты событий на правом и левом
-		детекторах как функция времени.\label{fig:LRDetErr}}
+		детекторах как функция времени\label{fig:LRDetErr}}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=.8\linewidth]{images/App_Stats/Asymmetry}
 	\caption{Ожидание (чёрная линия) и измерения (красные точки)
-		асимметрии сечения.\label{fig:Asym}}
+		асимметрии сечения\label{fig:Asym}}
 \end{figure}
 
 Если начальная оценка частоты, полученная из равномерной выборки, 
