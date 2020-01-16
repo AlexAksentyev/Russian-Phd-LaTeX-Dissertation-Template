@@ -42,3 +42,16 @@
 \DeclareDocumentCommand{\Xpct}{mo}{\mathrm{E}\bkt*{#1\IfNoValueTF{#2}{}{|~ #2}}}
 
 \newcommand{\ecm}{$e\cdot$см}
+
+\newtheoremstyle{custom-style}%                % Name
+{}%                                     % Space above
+{}%                                     % Space below
+{\normalfont}%                                     % Body font
+{}%                                     % Indent amount
+{\bfseries}%                            % Theorem head font
+{.}%                                    % Punctuation after theorem head
+{ }%                                    % Space after theorem head, ' ', or \newline
+{}%       
+
+\theoremstyle{custom-style}
+\newtheorem{rmk}{Комментарий}
