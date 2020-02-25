@@ -8,14 +8,15 @@
 \graphicspath{{../images/}{images/}} 
 
 \usepackage{../Dissertation/phdstyle}
-\usepackage[edges]{forest}
+%\usepackage[edges]{forest}
+\usepgfplotslibrary{fillbetween}
 %\newcommand{\W}{\Omega}
 \newcommand{\Wedm}{\W^{edm}}
 \newcommand{\Wmdm}{\W^{mdm}}
-\newcommand{\gef}{\gamma_{eff}}
+%\newcommand{\gef}{\gamma_{eff}}
 
-\usepackage{animate}
-\usepackage{tcolorbox}
+%\usepackage{animate}
+%\usepackage{tcolorbox}
 
 % \usetheme[secheader]{Boadilla}
 % \usecolortheme{seahorse}
@@ -29,6 +30,7 @@
 
 \newcommand{\todo}{\alert}
 \input{../common/data.tex}      % Основные сведения
+\renewcommand{\todo}[1]{\textcolor{black}{#1}}
 
 \setbeamercolor{footline}{fg=blue}
 \setbeamertemplate{footline}{
@@ -63,7 +65,7 @@
 %\date{\small{\thesisCity, \thesisYear}}
 
 \begin{document}
-	\title{\small{\thesisTitle}}
+	\title{\small{\textcolor{blue}{\thesisTitle}}}
 	\author{\small{%
 			\begin{tabular}{lll}
 				\emph{Соискатель:} & & \thesisAuthorShort\\
@@ -222,23 +224,7 @@
 %	\end{forest}
 %\end{frame}
 
-\begin{frame}{Кольцо с замороженным спином}
-\begin{block}{Уравнение Томаса-БМТ}
-	$\frac{\rd \vec s}{\rd t} = \vec s \times \bkt{\underbrace{a_0\cdot\vec B + a_1\cdot\vec E\times\vec\beta}_{\vec\Wmdm} + \underbrace{b_0\cdot\vec E + b_1\cdot\vec\beta\times\vec B}_{\vec\Wedm}}$
-\end{block}
-\begin{block}{Замороженный спин}
-	$\Wmdm_{(y)} = 0$
-\end{block}
-\end{frame}
 
-\begin{frame}{Схема ускорителя}
-\centering
-\begin{tikzpicture}
-	\node (scheme) {\includegraphics[width=.7\linewidth]{FS_ring}}; % из Proton EDM proposal
-	\pause
-	\node (real) at (scheme.center){\includegraphics[width=.9\linewidth]{chapter2/BNL_lattice}};
-\end{tikzpicture}
-\end{frame}
 
 %\begin{frame}{Варианты структур}
 %\framesubtitle{Истинно-замороженный спин}
@@ -288,7 +274,7 @@
 %\end{itemize}
 %\end{frame}
 
-\section{Экспериментальная база}
+\section{Экспериментальная база и метод исследования}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Синхротрон COSY}
 	\begin{columns}
@@ -307,9 +293,6 @@
 	\end{columns}
 	
 \end{frame}
-
-\section{Метод исследования}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Код COSY Infinity}
 	% Здесь про то, как Кози вычисляет трансфер матрицы
 	\begin{itemize}
@@ -329,101 +312,106 @@
 	\]
 \end{frame}
 
-\section{Результаты моделирования}
+\section{Содержание диссертации}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Эффект бетатронных колебаний}
-\framesubtitle{Почему это важно?}
-\begin{block}{ЭДМ-статистика}
-	$\hat\w_{edm} = \frac12(\hat\w_x^+ + \hat\w_x^-)$, где $\w_x^\pm = \w_{edm} \pm \w_{mdm}$
-\end{block}
-%\pause
-\begin{block}{Частота оценивается путём фитирования}
-	$f(t) = a\cdot\sin(\omega_x\cdot t + \delta) \mapsto \hat\w_x$, где $(a,\omega, \delta) = \const$
-\end{block}
-%\pause
-\begin{block}{Решение Т-БМТ уравнения даёт}
-	$a = \sqrt{\nbar_x^2 + (\nbar_y\cdot\nbar_z)^2}$, где $\nbar = g(\vec E, \vec B)$
-\end{block}
+\begin{frame}{Принцип измерения ЭДМ методом ``замороженного спина''}
+	\begin{block}{Уравнение Томаса-БМТ}
+		$\frac{\rd \vec s}{\rd t} = \vec s \times \bkt{\underbrace{a_0\cdot\vec B + a_1\cdot\vec E\times\vec\beta}_{\vec\Wmdm} + \underbrace{b_0\cdot\vec E + b_1\cdot\vec\beta\times\vec B}_{\vec\Wedm}}$
+	\end{block}
+	\begin{block}{Замороженный спин}
+		$\Wmdm_{(y)} = 0$
+	\end{block}
 \end{frame}
 
-\begin{frame}\centering
-\begin{tikzpicture}
-\node(NBAR) {\includegraphics[width=.8\linewidth]{smp_sim/NBAR_variation_sd_vs_SW}};
-\pause
-\node (resid) at (NBAR.center)[xshift=2cm, yshift=-2cm] {\includegraphics[width=.7\linewidth]{smp_sim/residual_SD_vs_SW(both)}};
-\end{tikzpicture}
+\begin{frame}{Схема ускорителя}
+	\centering
+	\begin{tikzpicture}
+	\node (scheme) {\includegraphics[width=.7\linewidth]{FS_ring}}; % из Proton EDM proposal
+	\pause
+	\node (real) at (scheme.center){\includegraphics[width=.9\linewidth]{chapter2/BNL_lattice}};
+%	\pause
+%	\node (QFS1) at (real.center)[xshift=-3cm, yshift=-2cm]{\includegraphics[width=.6\linewidth]{chapter2/E+B_lattice}};
+%	\pause 
+%	\node (QFS2) at (real.center)[xshift=2cm, yshift=-2cm]{\includegraphics[width=.6\linewidth]{chapter2/6_3_lattice}};
+	\end{tikzpicture}
 \end{frame}
 
-\begin{frame}{Выводы}
-\begin{enumerate}
-\item Осцилляции амплитуды сигнала пренебрежимо малы.
-\item Коэффициент корреляции $\sigma[\hat a, \hat\w] < 10\%$.
-\item Эффект поддаётся контролю (при использовании частотного метода).
-\end{enumerate}
+\begin{frame}{Общие проблемы поиска ЭДМ в накопительном кольце}
+	\begin{enumerate}
+		\item Возмущения спиновой динамики, связанные с бетатронными колебаниями частиц.
+		\item Спин-декогеренция частиц пучка в окрестности состояния ``замороженного спина.''
+		\item МДМ-компонента спин-прецессии, связанная с неидеальностями оптической структуры ускорителя.
+		\item Смена полярности ведущего поля, требуемая для сокращения в конечном выражении оценки ЭДМ МДМ-компоненты частоты спин-прецессии.
+	\end{enumerate}
 \end{frame}
 
-\begin{frame}{Калибровка МДМ-сигнала}
-\framesubtitle{Почему это важно?}
-\begin{block}{ЭДМ-статистика}
-	\begin{align*}
-		\hat\w_{edm} &= \frac12(\hat\w_x^+ + \hat\w_x^-) \\
-		&= \w_{edm} + \underbrace{\frac{1}{\sqrt2}\sigma_{\hat\w}}_{stat} + \underbrace{(\w_{mdm}^+ - \w_{mdm}^-)}_{syst}
-	\end{align*}
-\end{block}
-\begin{block}{Утверждение}
-	$\left[\w_y^{mdm+} - \w_y^{mdm-} \to 0\right] \Rightarrow \left[\w_x^{mdm+} - \w_x^{mdm-} \to 0\right]$
-\end{block}
+\begin{frame}{Возмущения спин-динамики}
+	\begin{block}{Проблема}
+		Вызывают осцилляции амплитуды фитируемого сигнала.
+	\end{block}
+	\begin{block}{Выводы}
+		Осцилляции амплитуды сигнала
+		\begin{itemize}
+			\item на два порядка меньше случайной ошибки поляриметрии;
+			\item влияют на оценку частоты с коэффициентом аттеньюции 10;
+			\item поддаются контролю при использовании частотного подхода к измерениям.
+		\end{itemize}
+	\end{block}
+\end{frame}
+\begin{frame}{Спин-декогеренция}
+	\begin{block}{Проблема}
+		Ограничение на длительность измерительного цикла.
+	\end{block}
+	\begin{block}{Выводы}
+		\begin{enumerate}
+			\item В частотных методах измерения ЭДМ спин-декогеренция переходит из плоскости замкнутой орбиты, в плоскость измерения поляризации.
+			\item Секступольные элементы одновременно выравнивают как \textbf{частоты}, так и \textbf{направления} осей прецессии спинов частиц.
+		\end{enumerate}
+	\end{block}
+\end{frame}
+\begin{frame}{МДМ-компонента спин-прецессии}
+	\begin{block}{Проблема}
+		Основная систематическая ошибка $\Wmdm$.
+	\end{block}
+	\begin{block}{Выводы}
+		\begin{enumerate}
+			\item Зависит только от \textbf{среднего} угла наклона $\avg{\theta_{tilt}}$, но не от конкретной последовательности наклонов оптических элементов ускорителя.
+			\item Зависимость носит линейный характер: $\Wmdm = L(\avg{\theta_{tilt}})$.
+			\item Устраняется в статистике путём измерений частоты прецесии спина в противоположно движущемся пучке.
+		\end{enumerate}
+	\end{block}
+\end{frame}
+\begin{frame}{Смена полярности ведущего поля}
+	\begin{block}{Проблема}
+		Сменить полярность поля таким образом, чтобы воспроизвести величину $\Wmdm_x$ во всех измерительных циклах с точностью не хуже $10^{-7}$~рад/сек.
+	\end{block}
+	\begin{block}{Выводы}
+		\begin{enumerate}
+			\item Воспроизведение величины магнитного поля не достаточно; необходимо восстанавливать эффективный Лоренц-фактор центра масс пучка.
+			\item Если $|\Delta\Wmdm_y| < 10^{-7}$~рад/сек, то $|\Delta\Wmdm_x|<10^{-7}$~рад/сек.
+		\end{enumerate}
+	\end{block}
 \end{frame}
 
-\begin{frame}{Калибровка МДМ-сигнала}
-\framesubtitle{Результаты симуляции}
-\centering
-\begin{tikzpicture}
-%\node (A) {\includegraphics[width=\linewidth]{GFF/GFF_stune_range_Y}};
-%\pause
-\node (B)  {\includegraphics[width=\linewidth]{GFF/GFF_omegas_range_Y}};
-\end{tikzpicture}
+\begin{frame}{Статистическое моделирование}
+	\begin{block}{Выводы}
+		\begin{enumerate}
+			\item $\W_{spin}$ оценивается фитированием данных поляриметрии функцией $f(t)=a\cdot \sin(\omega\cdot t + \phi)$.
+			\item Ошибка поляриметрии растёт к концу измерительного цикла $\Rightarrow$ гетероскедастичные регрессионные модели.
+			\item Полезная длительность измерительного цикла не превосходит $3\cdot\tau_d$.
+			\item За один измерительный цикл в 1000~сек можно достичь $\sigma_{\hat\w}\approx 10^{-7}$~рад/сек, что за год измерений позволяет оценить ЭДМ с точностью $10^{-29}$\ecm.
+		\end{enumerate}
+	\end{block}
 \end{frame}
-
-\begin{frame}{Подавление спин-декогеренции}
-\framesubtitle{Идеальная структура}
-\centering
-\begin{tikzpicture}
-\node (X) {\includegraphics[height=.5\paperheight]{decoh_sim/spin_tune_decoh_x_offset}};
-\pause
-\node (Y) at (X.east)[yshift=-1.7cm]{\includegraphics[height=.5\paperheight]{decoh_sim/spin_tune_decoh_y_offset}};
-\pause
-\node (D) at (X.center)[yshift=-2.3cm]{\includegraphics[height=.5\paperheight]{decoh_sim/spin_tune_decoh_d_offset}};
-\end{tikzpicture}
+\begin{frame}{Результаты на COSY}
+	\begin{block}{Успехи}
+		\begin{enumerate}
+			\item Высокоточное измерение нормализованной частоты прецессии спина: $\sigma_{\nu_s}\approx 10^{-10}$, $\sigma_{edm}\approx 10^{-24}$\ecm.
+			\item Юстировка квадруполей при помощи пучка: точность определения положения квадруполей до 0.2~мм.
+			\item Оптимизация времени когерентности спина: время жизни поляризации свыше 1~000~сек.
+		\end{enumerate}
+	\end{block}
 \end{frame}
-%\begin{frame}{Декогеренция в неидеальной структуре}
-%\begin{tikzpicture}
-%\node (imgX) {\includegraphics[width=.65\linewidth]{decoh_sim/SX_decoh_20sec_unopt}};
-%\pause
-%\node (imgY) at (imgX.south east)[yshift=1cm]{\includegraphics[width=.65\linewidth]{decoh_sim/SY_decoh_20sec_unopt}};
-%\end{tikzpicture}
-%\end{frame}
-%\begin{frame}{Включаем секступоли}
-%\begin{tikzpicture}
-%\node (imgX) {\includegraphics[width=.65\linewidth]{decoh_sim/SX_decoh_20sec_opt}};
-%\pause
-%\node (imgY) at (imgX.south east)[yshift=1cm]{\includegraphics[width=.65\linewidth]{decoh_sim/SY_decoh_20sec_opt}};
-%\end{tikzpicture}
-%\end{frame}
-
-\section{Результаты эксперимента}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Исследования на COSY}
-\framesubtitle{Спин-декогеренция}
-\centering
-\begin{tikzpicture}
-\node (COSY) {\includegraphics[width=.9\linewidth]{chapter4/COSY-sextupoles}};
-\pause
-\node (imgA) at (COSY.north east) [xshift=-3cm] {\includegraphics[width=.6\linewidth]{chapter4/SCT-April-2019/MXL_scan}};
-\pause
-\node (imgB) at (COSY.south west) [xshift=3cm, yshift=1cm] {\includegraphics[width=.6\linewidth]{chapter4/SCT-April-2019/MXG_scan}};
-\end{tikzpicture}
-f\end{frame}
 
 \section{Формальные вещи}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -448,33 +436,143 @@ f\end{frame}
 	\begin{enumerate}\setcounter{enumi}{4}
 		\item Проведено численное моделирование метода калибровки нормализованной частоты прецессии спина 
 		при смене полярности ведущего поля накопительного кольца.
-		\item Исследованы систематические ошибки в различных предложениях по проведению эксперимента 
-		по поиску электрического дипольного момента.
+%		\item Исследованы систематические ошибки в различных предложениях по проведению эксперимента 
+%		по поиску электрического дипольного момента.
 		\item Проведена оценка статистических свойств предложенного метода измерения 
 		ЭДМ в накопительном кольце.
 	\end{enumerate}
 \end{frame}
 \begin{frame}{Положения выносимые на защиту}
-	\begin{itemize}
+	\begin{enumerate}
 		\item Метод измерения электрического дипольного момента дейтрона, основанный исключительно на измерении частоты прецессии спина при движении пучка в накопительном синхротроне.
 		\item Принцип построения магнитооптической структуры накопительного кольца, ориентированного на поиск электрического дипольного момента дейтрона.
 		\item Результаты исследования спин-декогеренции пучка дейтронов в окрестности состояния ``замороженного'' спина и метод её подавления с помощью нелинейных магнитных элементов.
-	\end{itemize}
+	\end{enumerate}
 \end{frame}
 \begin{frame}
-	\begin{itemize}
+	\begin{enumerate}
 		\item Результаты исследования влияния различного рода несовершенств элементов накопительного кольца 
 		на спин-орбитальную динамику пучка. 
 		\item Метод калибровки нормализованной частоты прецессии спина при попеременной смене полярности ведущего поля и его численная модель.
 		\item Результаты исследования систематических ошибок в различных предложениях по проведению эксперимента по поиску электрического дипольного момента и их сравнения с разработанным методом. 
 		\item Результаты исследования статистических свойств разработанного метода измерения ЭДМ	в накопительном кольце.
-	\end{itemize}
+	\end{enumerate}
 \end{frame}
 
 \begin{frame}
 \begin{center}
 Спасибо за внимание!
 \end{center}
+\end{frame}
+
+\section{Reserve}
+\begin{frame}{Возмущения спин-динамики}\centering
+\begin{tikzpicture}
+\node(NBAR) {\includegraphics[width=.8\linewidth]{smp_sim/NBAR_variation_sd_vs_SW}};
+\pause
+\node (resid) at (NBAR.center)[xshift=2cm, yshift=-2cm] {\includegraphics[width=.7\linewidth]{smp_sim/residual_SD_vs_SW(both)}};
+\end{tikzpicture}
+\end{frame}
+\begin{frame}{Спин-декогеренция}
+	\framesubtitle{Идеальная структура}
+	\centering
+	\begin{tikzpicture}
+	\node (X) {\includegraphics[height=.5\paperheight]{decoh_sim/spin_tune_decoh_x_offset}};
+	\pause
+	\node (Y) at (X.east)[yshift=-1.7cm]{\includegraphics[height=.5\paperheight]{decoh_sim/spin_tune_decoh_y_offset}};
+	\pause
+	\node (D) at (X.center)[yshift=-2.3cm]{\includegraphics[height=.5\paperheight]{decoh_sim/spin_tune_decoh_d_offset}};
+	\end{tikzpicture}
+\end{frame}
+\begin{frame}{Спин-декогеренция}
+	\framesubtitle{Неидеальная структура: без секступолей}
+\begin{tikzpicture}
+\node (imgX) {\includegraphics[width=.65\linewidth]{decoh_sim/SX_decoh_20sec_unopt}};
+\pause
+\node (imgY) at (imgX.south east)[yshift=1cm]{\includegraphics[width=.65\linewidth]{decoh_sim/SY_decoh_20sec_unopt}};
+\end{tikzpicture}
+\end{frame}
+\begin{frame}{Спин-декогеренция}
+	\framesubtitle{Неидеальная структура: с секступолями}
+\begin{tikzpicture}
+\node (imgX) {\includegraphics[width=.65\linewidth]{decoh_sim/SX_decoh_20sec_opt}};
+\pause
+\node (imgY) at (imgX.south east)[yshift=1cm]{\includegraphics[width=.65\linewidth]{decoh_sim/SY_decoh_20sec_opt}};
+\end{tikzpicture}
+\end{frame}
+\begin{frame}{Спин-декогеренция}\centering
+	\framesubtitle{Выравнивание осей стабильного спина частиц}
+	\includegraphics[width=.9\linewidth]{decoh_sim/mean_n_bar_vs_spin_tune}
+\end{frame}
+\begin{frame}{МДМ-компонента спин-прецессии}
+	\centering
+	\begin{tikzpicture}
+	\node (A) {\includegraphics[width=.7\linewidth]{fake_signal_sim/linearity_test_shifting_gauss_freq}};
+	\pause
+	\node (B) at (A.center)[xshift=2cm, yshift=-2cm]  {\includegraphics[width=.7\linewidth]{fake_signal_sim/linearity_test_shifting_gauss_rel_diff}};
+	\end{tikzpicture}
+\end{frame}
+\begin{frame}{Калибровка МДМ-сигнала}
+	\framesubtitle{Почему это важно?}
+	\begin{block}{ЭДМ-статистика}
+		\begin{align*}
+		\hat\w_{edm} &= \frac12(\hat\w_x^+ + \hat\w_x^-) \\
+		&= \w_{edm} + \underbrace{\frac{1}{\sqrt2}\sigma_{\hat\w}}_{stat} + \underbrace{(\w_{mdm}^+ - \w_{mdm}^-)}_{syst}
+		\end{align*}
+	\end{block}
+	\begin{block}{Утверждение}
+		$\left[\w_y^{mdm+} - \w_y^{mdm-} \to 0\right] \Rightarrow \left[\w_x^{mdm+} - \w_x^{mdm-} \to 0\right]$
+	\end{block}
+\end{frame}
+\begin{frame}{Калибровка МДМ-сигнала}
+	\framesubtitle{Калибровочный график}
+	\centering
+	\begin{tikzpicture}
+	%\node (A) {\includegraphics[width=\linewidth]{GFF/GFF_stune_range_Y}};
+	%\pause
+	\node (B)  {\includegraphics[width=\linewidth]{GFF/GFF_omegas_range_Y}};
+	\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Статистическое моделирование}
+	\framesubtitle{Модулированная схема выборки}
+	\begin{figure}[H]\centering
+%		\begin{minipage}{.6\linewidth}
+			\begin{tikzpicture}
+			\begin{axis}[axis lines=center, xlabel=$t$, domain=-.5:2*pi, legend pos=outer north east, width=.8\linewidth,
+			scatter/use mapped color={draw=black, fill=black}
+			]
+			\addplot[color=blue, name path=signal, domain=-.1:2*pi,samples=50] {sin(deg(x))};
+			\draw[dashed] (axis cs:.785,0) -- (axis cs:.785,{sin(deg(.785))});
+			\draw[dashed] (axis cs:2.36,0) -- (axis cs:2.36,{sin(deg(2.36))});
+			\draw[dashed] (axis cs:3.93,0) -- (axis cs:3.93,{sin(deg(3.93))});
+			\draw[dashed] (axis cs:5.5,0) -- (axis cs:5.5,{sin(deg(5.5))});
+			\path[name path=axis] (axis cs:0,0) -- (axis cs:2*pi,0);
+			\addplot[fill=blue, opacity=.05] fill between [of=signal and axis, soft clip={domain=0:.785}];
+			\addplot[fill=blue, opacity=.05] fill between [of=signal and axis, soft clip={domain=2.36:3.93}];
+			\addplot[fill=blue, opacity=.05] fill between [of=signal and axis, soft clip={domain=5.5:2*pi}];
+			\addplot [scatter, only marks, domain=-.1:.7, samples=5] {sin(deg(x))};
+			\addplot [scatter, only marks, domain=2.4:3.9, samples=10, mark=*] {sin(deg(x))};
+			\addplot [scatter, only marks, domain=5.6:6.2, samples=5, mark=*] {sin(deg(x))};
+			\end{axis}     
+			\end{tikzpicture}
+%		\end{minipage}%
+%		\begin{minipage}{.4\linewidth}
+%			\caption{Частотно-модулированная выборка: измерения делаются только в максимально информативных точках,
+%				находящихся в окрестностях узлов сигнала\label{fig:modulated_sampling}}
+%		\end{minipage}
+	\end{figure}
+\end{frame}
+\begin{frame}{Результаты на COSY}
+	\framesubtitle{Спин-декогеренция}
+	\centering
+	\begin{tikzpicture}
+	\node (COSY) {\includegraphics[width=.9\linewidth]{chapter4/COSY-sextupoles}};
+	\pause
+	\node (imgA) at (COSY.north east) [xshift=-3cm] {\includegraphics[width=.6\linewidth]{chapter4/SCT-April-2019/MXL_scan}};
+	\pause
+	\node (imgB) at (COSY.south west) [xshift=3cm, yshift=1cm] {\includegraphics[width=.6\linewidth]{chapter4/SCT-April-2019/MXG_scan}};
+	\end{tikzpicture}
 \end{frame}
 
 %\begin{frame}[allowframebreaks]
