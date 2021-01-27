@@ -5,6 +5,13 @@
 \usepackage{amssymb,amsfonts,amsmath,mathtext}
 \usepackage{cite,enumerate,float,indentfirst}
 
+\newcommand\blfootnote[1]{%
+	\begingroup
+	\renewcommand\thefootnote{}\footnote{#1}%
+	\addtocounter{footnote}{-1}%
+	\endgroup
+}
+
 \graphicspath{{../images/}{images/}} 
 
 \usepackage{../Dissertation/phdstyle}
@@ -94,9 +101,13 @@
 %	\end{itemize}
 %\end{frame}
 \begin{frame}{Актуальность}
-	\begin{center}
-		\includegraphics[height=.8\paperheight]{NEDM_P&T_violation}
-	\end{center}
+	\begin{columns}
+		\column{.45\linewidth}
+		\includegraphics[width=\linewidth]{neutron_edm_timeline}
+		\column{.4\linewidth}
+		\includegraphics[width=.8\linewidth]{NEDM_P&T_violation}
+	\end{columns}
+\blfootnote{График взят из \textbf{arXiv:0709.3100}}
 \end{frame}
 
 \begin{frame}{Цель исследования}
@@ -148,6 +159,23 @@
 		\item Результаты работы вошли в подготавливаемый коллаборацией CPEDM для CERN отчёта, под названием ``Feasibility study for an EDM Storage Ring.''
 		\item Основные результаты работы докладывались на международных концеренциях IPAC'17, IPAC'19, LaPlas III--V, а также конференциях коллаборации JEDI, и семинарах IKP-2 Forschungszentrum J\"ulich.
 	\end{itemize}
+\end{frame}
+
+\begin{frame}{Положения выносимые на защиту}
+	\begin{enumerate}
+		\item Метод измерения электрического дипольного момента дейтрона.
+		\item Принцип построения магнитооптической структуры накопительного кольца.
+		\item Результаты исследования спин-декогеренции пучка дейтронов в окрестности состояния ``замороженного'' спина.
+		\item Результаты исследования влияния различного рода несовершенств элементов накопительного кольца 
+		на спин-орбитальную динамику пучка. 
+	\end{enumerate}
+\end{frame}
+\begin{frame}
+	\begin{enumerate}\setcounter{enumi}{3}
+		\item Метод калибровки нормализованной частоты прецессии спина.
+		\item Результаты исследования систематических ошибок в различных методах поиска ЭДМ. 
+		\item Результаты исследования статистических свойств разработанного метода.
+	\end{enumerate}
 \end{frame}
 
 %\begin{frame}{Структура диссертации}
@@ -278,7 +306,7 @@
 	\begin{columns}
 		\column{.55\linewidth}
 		\centering
-		\includegraphics[width=\linewidth]{COSY_facility}
+		\includegraphics[width=.95\linewidth]{COSY_facility}
 		\column{.5\linewidth}
 		\begin{itemize}
 			\item[$-$] Чисто магнитное кольцо
@@ -317,7 +345,7 @@
 		$\frac{\rd \vec s}{\rd t} = \vec s \times \bkt{\underbrace{a_0\cdot\vec B + a_1\cdot\vec E\times\vec\beta}_{\vec\Wmdm} + \underbrace{b_0\cdot\vec E + b_1\cdot\vec\beta\times\vec B}_{\vec\Wedm}}$
 	\end{block}
 	\begin{block}{Замороженный спин}
-		$\Wmdm_{(y)} = 0$
+		$\Wmdm_{(y)} \to 0$
 	\end{block}
 \end{frame}
 
@@ -333,7 +361,34 @@
 %	\node (QFS2) at (real.center)[xshift=2cm, yshift=-2cm]{\includegraphics[width=.6\linewidth]{chapter2/6_3_lattice}};
 	\end{tikzpicture}
 \end{frame}
-
+\begin{frame}{Замороженный спин: 3D vs 2D}
+	\begin{minipage}[t]{.5\linewidth}
+		\textbf{3D} (BNL): $\vec\Wmdm\to0$
+	\end{minipage}%%		
+	\begin{minipage}[t]{.5\linewidth}
+		\textbf{2D} (FDM): $\Wmdm_{(y)}\to0$
+	\end{minipage}
+	\begin{minipage}[t]{.5\linewidth}
+		\begin{enumerate}
+			\item \textbf{дестабилизация} оси поляризации
+			\item нужна большая \textbf{точность} установки оптических элементов
+			\item \textbf{трудная} поляриметрия
+		\end{enumerate}
+	\end{minipage}%%
+	\begin{minipage}[t]{.5\linewidth}
+		\begin{enumerate}
+			\item \textbf{выделенная}\\ось поляризации
+			\item неидеальности машины \textbf{задают} ось
+			\item \textbf{нет} проблем с поляриметрией
+		\end{enumerate}
+	\end{minipage}
+%	\begin{columns}
+%		\column{.5\linewidth}
+%		
+%		\column{.5\linewidth}
+%		
+%	\end{columns}
+\end{frame}
 \begin{frame}{Общие проблемы поиска ЭДМ в накопительном кольце}
 	\begin{enumerate}
 		\item Возмущения спиновой динамики, связанные с бетатронными колебаниями частиц.
@@ -439,15 +494,22 @@
 		\end{enumerate}
 	\end{block}
 \end{frame}
+\begin{frame}{Оптимизация времени когерентности спина на COSY}
+		\centering
+		\begin{tikzpicture}
+		\node (COSY) {\includegraphics[width=.9\linewidth]{chapter4/COSY-sextupoles}};
+		\pause
+		\node (pol) at (COSY.center) {\includegraphics[width=.9\linewidth]{polarization_vs_time_MXG_sweep}};
+		\end{tikzpicture}
+\end{frame}
 \begin{frame}{Результаты на COSY}
 	\framesubtitle{Спин-декогеренция}
 	\centering
 	\begin{tikzpicture}
-	\node (COSY) {\includegraphics[width=.9\linewidth]{chapter4/COSY-sextupoles}};
+	\node (pol) {\includegraphics[width=.9\linewidth]{polarization_vs_time_MXG_sweep}};
+	\node (imgA) at (pol.center) [xshift=2cm, yshift=2cm] {\includegraphics[width=.6\linewidth]{chapter4/SCT-April-2019/MXL_scan}};
 	\pause
-	\node (imgA) at (COSY.north east) [xshift=-3cm] {\includegraphics[width=.6\linewidth]{chapter4/SCT-April-2019/MXL_scan}};
-	\pause
-	\node (imgB) at (COSY.south west) [xshift=3cm, yshift=1cm] {\includegraphics[width=.6\linewidth]{chapter4/SCT-April-2019/MXG_scan}};
+	\node (imgB) at (pol.center) [xshift=-3cm, yshift=-1cm] {\includegraphics[width=.6\linewidth]{chapter4/SCT-April-2019/MXG_scan}};
 	\end{tikzpicture}
 \end{frame}
 
@@ -471,22 +533,6 @@
 		\item Проведена оценка статистических свойств разработанного метода измерения ЭДМ.
 	\end{enumerate}
 \end{frame}
-\begin{frame}{Положения выносимые на защиту}
-	\begin{enumerate}
-		\item Метод измерения электрического дипольного момента дейтрона.
-		\item Принцип построения магнитооптической структуры накопительного кольца.
-		\item Результаты исследования спин-декогеренции пучка дейтронов в окрестности состояния ``замороженного'' спина.
-		\item Результаты исследования влияния различного рода несовершенств элементов накопительного кольца 
-		на спин-орбитальную динамику пучка. 
-	\end{enumerate}
-\end{frame}
-\begin{frame}
-	\begin{enumerate}\setcounter{enumi}{3}
-		\item Метод калибровки нормализованной частоты прецессии спина.
-		\item Результаты исследования систематических ошибок в различных методах поиска ЭДМ. 
-		\item Результаты исследования статистических свойств разработанного метода.
-	\end{enumerate}
-\end{frame}
 
 \begin{frame}
 \begin{center}
@@ -495,6 +541,98 @@
 \end{frame}
 
 \section{Reserve}
+\begin{frame}{}%{Уравнение Т-БМТ}%\framesubtitle{как получить ``замороженный спин''}
+	\begin{block}{Уравнение Томаса-БМТ}
+		\begin{align*}
+			\frac{\rd \vec s}{\rd t} &= \vec s \times \left(\vec\Wmdm + \vec\Wedm\right)\\
+			\vec\Wmdm &= \frac em\left(G\vec B + \left[\frac{1}{\gamma^2-1}-G\right]\frac{\vec\beta\times\vec E}{c}\right)\\
+			\vec\Wedm &= \frac em\frac\eta2\left[\frac{\vec E}{c} + \vec\beta\times\vec B\right]
+		\end{align*}
+%		$\frac{\rd \vec s}{\rd t} = \vec s \times \bkt{\underbrace{a_0\cdot\vec B + a_1\cdot\vec E\times\vec\beta}_{\vec\Wmdm} + \underbrace{b_0\cdot\vec E + b_1\cdot\vec\beta\times\vec B}_{\vec\Wedm}}$
+	\end{block}
+\begin{block}{Параметры}
+	\begin{align*}
+		G &= (g-2)/2 \tag{аномальный магнитный момент}\\
+		d &= \eta eh/(4mc), ~\text{где}~ \eta \approx 2\cdot 10^{-15} \tag{ЭДМ}
+	\end{align*}
+\end{block}
+\end{frame}
+\begin{frame}{Поляриметрия с EDDA}
+	\centering
+	\includegraphics[height=.7\paperheight]{polarimeter_EDDA}
+	\blfootnote{Взято из презентации \textbf{EDM of the muon, deuteron, and proton in storage rings} [докладчик W. Morse (BNL)]}
+\end{frame}
+
+\begin{frame}{BNL-метод}
+	\begin{block}{Идея: измерение набега фазы}
+		$\vec\W_{MDM}\to 0$\\
+		\centering
+		$\Delta P_V = P\frac{\W_{edm}}{\W}\sin\left(\W t + \Theta_0\right)$%,\\
+		%		$\W = \sqrt{\W_{EDM}^2+\W_{MDM}^2}$
+	\end{block}
+	\begin{block}{Проблемы}
+		\begin{enumerate}
+			\item $\vec\W_{MDM}\to0\Rightarrow$ дестабилизация оси поляризации
+			\item чтобы $\vec\W_{MDM}\to0\Rightarrow$ нужна большая точность установки оптических элементов кольца
+			\item если $\vec\W_{MDM}\approx0$, то $\Delta P_V(\Delta t_{cyc})\ll1 \Rightarrow$ проблема для поляриметрии
+		\end{enumerate}
+	\end{block}
+\end{frame}
+\begin{frame}{Spin Wheel метод}\centering
+	\includegraphics[width=.8\linewidth]{Koop2015}
+	\blfootnote{Koop I A, 2015 \textit{Phys. Scr.} \textbf{2015} 014034}
+	\begin{enumerate}
+		\item Два пучка (поляризованный и неполяризованный)
+		\item \textbf{Диполь} $\vec B_x$ для вращения $\vec P$ с частотой 1 Гц
+		\item Измерить $\vec\W_x$ и $\Delta$ замкнутых орбит пучков
+		\item $\hat\W_{EDM} = \frac12 \left[\hat\W_x(+\Delta) + \hat\W_x(-\Delta)\right]$
+	\end{enumerate}
+\end{frame}
+\begin{frame}{Spin Wheel метод}
+	\begin{block}{Достоинства}
+		Не нужно подавлять МДМ спин-прецессию, а значит нет проблемы нестабильности оси поляризации
+	\end{block}
+	\begin{block}{Проблемы}
+		\begin{enumerate}
+			\item Ограничения на \textbf{сечение взаимодействия} потому что используется пучок-магнетометр
+			\item Нужна возможность определения вертикального разделения орбит пучков на уровне $\Delta\sim10^{-12}$~м
+		\end{enumerate}
+	\end{block}
+\end{frame}
+\begin{frame}{Frequency Domain метод}
+	\begin{block}{Идея}
+		\centering	Вместо \textbf{диполя} -- неидеальности машины
+	\end{block}
+	\begin{block}{Основные моменты} 
+		\begin{itemize}
+			\item попеременная CW/CCW инжекция
+			\item калибровка величины ведущего поля требует только измерения $\W$
+			\item $\hat \W_{EDM} = \frac12\Big[\hat\W_x^{CW} + \hat\W_x^{CCW}\Big]$
+		\end{itemize}
+	\end{block}
+\end{frame}
+\begin{frame}{Калибровка МДМ-сигнала}
+	\framesubtitle{Почему это важно?}
+	\begin{block}{ЭДМ-статистика}
+		\begin{align*}
+		\hat\w_{edm} &= \frac12(\hat\w_x^+ + \hat\w_x^-) \\
+		&= \w_{edm} + \underbrace{\frac{1}{\sqrt2}\sigma_{\hat\w}}_{stat} + \underbrace{(\w_{mdm}^+ - \w_{mdm}^-)}_{syst}
+		\end{align*}
+	\end{block}
+	\begin{block}{Утверждение}
+		$\left[\w_y^{mdm+} - \w_y^{mdm-} \to 0\right] \Rightarrow \left[\w_x^{mdm+} - \w_x^{mdm-} \to 0\right]$
+	\end{block}
+\end{frame}
+\begin{frame}{Калибровка МДМ-сигнала}
+	\framesubtitle{Калибровочный график}
+	\centering
+	\begin{tikzpicture}
+	%\node (A) {\includegraphics[width=\linewidth]{GFF/GFF_stune_range_Y}};
+	%\pause
+	\node (B)  {\includegraphics[width=\linewidth]{GFF/GFF_omegas_range_Y}};
+	\end{tikzpicture}
+\end{frame}
+
 \begin{frame}{Возмущения спин-динамики}\centering
 \begin{tikzpicture}
 \node(NBAR) {\includegraphics[width=.8\linewidth]{smp_sim/NBAR_variation_sd_vs_SW}};
@@ -539,27 +677,6 @@
 	\node (A) {\includegraphics[width=.7\linewidth]{fake_signal_sim/linearity_test_shifting_gauss_freq}};
 	\pause
 	\node (B) at (A.center)[xshift=2cm, yshift=-2cm]  {\includegraphics[width=.7\linewidth]{fake_signal_sim/linearity_test_shifting_gauss_rel_diff}};
-	\end{tikzpicture}
-\end{frame}
-\begin{frame}{Калибровка МДМ-сигнала}
-	\framesubtitle{Почему это важно?}
-	\begin{block}{ЭДМ-статистика}
-		\begin{align*}
-		\hat\w_{edm} &= \frac12(\hat\w_x^+ + \hat\w_x^-) \\
-		&= \w_{edm} + \underbrace{\frac{1}{\sqrt2}\sigma_{\hat\w}}_{stat} + \underbrace{(\w_{mdm}^+ - \w_{mdm}^-)}_{syst}
-		\end{align*}
-	\end{block}
-	\begin{block}{Утверждение}
-		$\left[\w_y^{mdm+} - \w_y^{mdm-} \to 0\right] \Rightarrow \left[\w_x^{mdm+} - \w_x^{mdm-} \to 0\right]$
-	\end{block}
-\end{frame}
-\begin{frame}{Калибровка МДМ-сигнала}
-	\framesubtitle{Калибровочный график}
-	\centering
-	\begin{tikzpicture}
-	%\node (A) {\includegraphics[width=\linewidth]{GFF/GFF_stune_range_Y}};
-	%\pause
-	\node (B)  {\includegraphics[width=\linewidth]{GFF/GFF_omegas_range_Y}};
 	\end{tikzpicture}
 \end{frame}
 
